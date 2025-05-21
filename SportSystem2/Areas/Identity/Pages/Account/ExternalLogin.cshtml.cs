@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using SportSystem2.Data;
 using SportSystem2.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
@@ -25,13 +26,15 @@ namespace SportSystem2.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly ApplicationDbContext _context;
 
         public ExternalLoginModel(
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -39,6 +42,7 @@ namespace SportSystem2.Areas.Identity.Pages.Account
             _emailStore = GetEmailStore();
             _logger = logger;
             _emailSender = emailSender;
+            _context = context;
         }
 
         /// <summary>
@@ -80,6 +84,14 @@ namespace SportSystem2.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+
+            [Required]
+            [Display(Name = "Full Name")]
+            public string FullName { get; set; }
+
+            [Display(Name = "Are you a judge?")]
+            public bool IsJudge { get; set; }
         }
 
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -94,12 +106,14 @@ namespace SportSystem2.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
+
             if (remoteError != null)
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
+
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
@@ -107,32 +121,51 @@ namespace SportSystem2.Areas.Identity.Pages.Account
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
-            // Sign in the user with this external login provider if the user already has a login.
-            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            var result = await _signInManager.ExternalLoginSignInAsync(
+                info.LoginProvider,
+                info.ProviderKey,
+                isPersistent: false,
+                bypassTwoFactor: true);
+
             if (result.Succeeded)
             {
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 return LocalRedirect(returnUrl);
             }
+
             if (result.IsLockedOut)
             {
                 return RedirectToPage("./Lockout");
             }
-            else
+
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            if (email != null)
             {
-                // If the user does not have an account, then ask the user to create an account.
-                ReturnUrl = returnUrl;
-                ProviderDisplayName = info.ProviderDisplayName;
-                if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+                var existingUser = await _userManager.FindByEmailAsync(email);
+                if (existingUser != null)
                 {
-                    Input = new InputModel
+                    var addLoginResult = await _userManager.AddLoginAsync(existingUser, info);
+                    if (addLoginResult.Succeeded)
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
-                    };
+                        await _signInManager.SignInAsync(existingUser, isPersistent: false);
+                        _logger.LogInformation("Linked {LoginProvider} to existing user {Email}.", info.LoginProvider, email);
+                        return LocalRedirect(returnUrl);
+                    }
                 }
-                return Page();
             }
+
+            ReturnUrl = returnUrl;
+            ProviderDisplayName = info.ProviderDisplayName;
+
+            Input = new InputModel
+            {
+                Email = email
+            };
+
+            return Page();
         }
+
 
         public async Task<IActionResult> OnPostConfirmationAsync(string returnUrl = null)
         {
@@ -151,7 +184,8 @@ namespace SportSystem2.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-
+                user.FullName = Input.FullName;
+                user.IsJudge = Input.IsJudge;
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -159,7 +193,18 @@ namespace SportSystem2.Areas.Identity.Pages.Account
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
-
+                        if (Input.IsJudge)
+                        {
+                            await _userManager.AddToRoleAsync(user, "Judge");
+                            var judge = new Judge
+                            {
+                                ApplicationUserId = user.Id,
+                                FullName = Input.FullName,
+                                QualificationLevel = "Unqualified"
+                            };
+                            _context.Judges.Add(judge);
+                            await _context.SaveChangesAsync();
+                        }
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

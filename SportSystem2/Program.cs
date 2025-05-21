@@ -12,11 +12,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddUserSecrets<Program>()
+    .AddEnvironmentVariables();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 var smtpSettings = builder.Configuration.GetSection("SmtpSettings").Get<SmtpSettings>();
+
 builder.Services.AddSingleton(smtpSettings);
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 builder.Services.AddScoped<IStandingsUpdater, StandingsUpdater>();
@@ -57,6 +62,15 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
+
+
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    });
+
 
 var app = builder.Build();
 
