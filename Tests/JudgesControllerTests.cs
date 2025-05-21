@@ -1,14 +1,11 @@
-﻿using Xunit;
-using Moq;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
+using SportSystem2.Models.DTOs;
 
 namespace Tests
 {
@@ -52,7 +49,7 @@ namespace Tests
             var result = await controller.Index();
 
             var viewResult = Assert.IsType<ViewResult>(result);
-            var model = Assert.IsAssignableFrom<List<JudgesController.JudgeViewModel>>(viewResult.Model);
+            var model = Assert.IsAssignableFrom<List<JudgeDTO>>(viewResult.Model);
             Assert.Single(model);
         }
 
@@ -83,7 +80,7 @@ namespace Tests
 
             var controller = new JudgesController(context, userManagerMock.Object, roleManagerMock.Object);
 
-            var model = new JudgeCreateViewModel
+            var model = new JudgeCreateDTO
             {
                 Email = "judge@example.com",
                 Password = "StrongPass123!",

@@ -1,151 +1,147 @@
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using SportSystem2.Controllers;
 using SportSystem2.Models;
-using Xunit;
-namespace Tests;
-public class AccountControllerTests
+using SportSystem2.Services;
+using System.Security.Claims;
+
+namespace Tests
 {
-    private readonly Mock<UserManager<ApplicationUser>> _userManagerMock;
-    private readonly Mock<IWebHostEnvironment> _envMock;
-
-    public AccountControllerTests()
+    public class AccountControllerTests
     {
-        var userStoreMock = new Mock<IUserStore<ApplicationUser>>();
-        _userManagerMock = new Mock<UserManager<ApplicationUser>>(
-            userStoreMock.Object, null, null, null, null, null, null, null, null);
-        _envMock = new Mock<IWebHostEnvironment>();
-    }
+        private readonly Mock<UserManager<ApplicationUser>> _userManagerMock;
+        private readonly Mock<IImageService> _imageServiceMock;
 
-    private AccountController CreateController()
-    {
-        return new AccountController(_userManagerMock.Object, _envMock.Object);
-    }
+        public AccountControllerTests()
+        {
+            var userStoreMock = new Mock<IUserStore<ApplicationUser>>();
+            _userManagerMock = new Mock<UserManager<ApplicationUser>>(
+                userStoreMock.Object, null, null, null, null, null, null, null, null);
+            _imageServiceMock = new Mock<IImageService>();
+        }
 
-    [Fact]
-    public async Task UploadPhoto_Post_NoFile_ReturnsViewWithModelError()
-    {
-        var controller = CreateController();
+        private AccountController CreateController()
+        {
+            return new AccountController(_userManagerMock.Object, _imageServiceMock.Object);
+        }
 
-        var result = await controller.UploadPhoto(null);
+        [Fact]
+        public async Task UploadPhoto_Post_NoFile_ReturnsViewWithModelError()
+        {
+            var controller = CreateController();
 
-        var viewResult = Assert.IsType<ViewResult>(result);
-        Assert.False(controller.ModelState.IsValid);
-        Assert.True(controller.ModelState.ContainsKey(""));
-    }
+            var result = await controller.UploadPhoto(null);
 
-    [Fact]
-    public async Task UploadPhoto_Post_InvalidUser_ReturnsNotFound()
-    {
-        var controller = CreateController();
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.False(controller.ModelState.IsValid);
+            Assert.True(controller.ModelState.ContainsKey(""));
+        }
 
-        _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<System.Security.Claims.ClaimsPrincipal>()))
-            .ReturnsAsync((ApplicationUser)null);
+        [Fact]
+        public async Task UploadPhoto_Post_InvalidUser_ReturnsNotFound()
+        {
+            var controller = CreateController();
 
-        var fileMock = new Mock<IFormFile>();
-        fileMock.Setup(f => f.Length).Returns(10);
-        fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
+            _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<ClaimsPrincipal>()))
+                .ReturnsAsync((ApplicationUser)null);
 
-        var result = await controller.UploadPhoto(fileMock.Object);
+            var fileMock = new Mock<IFormFile>();
+            fileMock.Setup(f => f.Length).Returns(10);
+            fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
 
-        Assert.IsType<NotFoundResult>(result);
-    }
+            var result = await controller.UploadPhoto(fileMock.Object);
 
-    [Theory]
-    [InlineData("application/pdf")]
-    [InlineData("text/plain")]
-    [InlineData("image/bmp")]
-    public async Task UploadPhoto_Post_InvalidContentType_ReturnsViewWithModelError(string contentType)
-    {
-        var controller = CreateController();
+            Assert.IsType<NotFoundResult>(result);
+        }
 
-        var user = new ApplicationUser();
-        _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<System.Security.Claims.ClaimsPrincipal>()))
-            .ReturnsAsync(user);
+        [Theory]
+        [InlineData("application/pdf")]
+        [InlineData("text/plain")]
+        [InlineData("image/bmp")]
+        public async Task UploadPhoto_Post_InvalidContentType_ReturnsViewWithModelError(string contentType)
+        {
+            var controller = CreateController();
 
-        var fileMock = new Mock<IFormFile>();
-        fileMock.Setup(f => f.Length).Returns(10);
-        fileMock.Setup(f => f.ContentType).Returns(contentType);
+            var user = new ApplicationUser();
+            _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<ClaimsPrincipal>()))
+                .ReturnsAsync(user);
 
-        var result = await controller.UploadPhoto(fileMock.Object);
+            var fileMock = new Mock<IFormFile>();
+            fileMock.Setup(f => f.Length).Returns(10);
+            fileMock.Setup(f => f.ContentType).Returns(contentType);
 
-        var viewResult = Assert.IsType<ViewResult>(result);
-        Assert.False(controller.ModelState.IsValid);
-        Assert.True(controller.ModelState.ContainsKey(""));
-    }
+            var result = await controller.UploadPhoto(fileMock.Object);
 
-    [Fact]
-    public async Task UploadPhoto_Post_ValidFile_UpdatesUserAndRedirects()
-    {
-        var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-        Directory.CreateDirectory(uploadsPath);
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.False(controller.ModelState.IsValid);
+            Assert.True(controller.ModelState.ContainsKey(""));
+        }
 
-        _envMock.Setup(e => e.WebRootPath).Returns(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"));
+        [Fact]
+        public async Task UploadPhoto_Post_ValidFile_UpdatesUserAndRedirects()
+        {
+            var user = new ApplicationUser();
+            var claimsPrincipal = new ClaimsPrincipal(
+                new ClaimsIdentity(
+                    new[] { new Claim(ClaimTypes.NameIdentifier, "test-user-id") },
+                    "mock"));
 
-        var user = new ApplicationUser();
-        _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<System.Security.Claims.ClaimsPrincipal>()))
-            .ReturnsAsync(user);
+            _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync(user);
+            _userManagerMock.Setup(u => u.UpdateAsync(user)).ReturnsAsync(IdentityResult.Success);
 
-        _userManagerMock.Setup(u => u.UpdateAsync(user))
-            .ReturnsAsync(IdentityResult.Success);
+            _imageServiceMock
+                .Setup(s => s.SaveImageAsync(It.IsAny<IFormFile>(), "users"))
+                .ReturnsAsync("/images/users/test.jpg");
 
-        var content = "Fake Image Content";
-        var fileName = "test.jpg";
+            var fileMock = new Mock<IFormFile>();
+            fileMock.Setup(f => f.Length).Returns(10);
+            fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
+            fileMock.Setup(f => f.FileName).Returns("test.jpg");
+            fileMock.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default)).Returns(Task.CompletedTask);
 
-        var ms = new MemoryStream();
-        var writer = new StreamWriter(ms);
-        writer.Write(content);
-        writer.Flush();
-        ms.Position = 0;
+            var controller = CreateController();
 
-        var fileMock = new Mock<IFormFile>();
-        fileMock.Setup(f => f.Length).Returns(ms.Length);
-        fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
-        fileMock.Setup(f => f.FileName).Returns(fileName);
-        fileMock.Setup(f => f.OpenReadStream()).Returns(ms);
-        fileMock.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default))
-            .Returns<Stream, System.Threading.CancellationToken>((stream, token) => ms.CopyToAsync(stream, token));
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext { User = claimsPrincipal }
+            };
 
-        var controller = CreateController();
+            var result = await controller.UploadPhoto(fileMock.Object);
 
-        var result = await controller.UploadPhoto(fileMock.Object);
+            var redirectResult = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Profile", redirectResult.ActionName);
+            Assert.Equal("/images/users/test.jpg", user.PhotoUrl);
 
-        var redirectResult = Assert.IsType<RedirectToActionResult>(result);
-        Assert.Equal("Profile", redirectResult.ActionName);
-        Assert.NotNull(user.PhotoUrl);
-        Assert.Contains("/uploads/", user.PhotoUrl);
-    }
+            _imageServiceMock.Verify(s => s.SaveImageAsync(fileMock.Object, "users"), Times.Once);
 
-    [Fact]
-    public async Task UploadPhoto_Post_UpdateFails_ReturnsViewWithModelError()
-    {
-        _envMock.Setup(e => e.WebRootPath).Returns(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"));
+        }
 
-        var user = new ApplicationUser();
-        _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<System.Security.Claims.ClaimsPrincipal>()))
-            .ReturnsAsync(user);
+        [Fact]
+        public async Task UploadPhoto_Post_UpdateFails_ReturnsViewWithModelError()
+        {
+            var user = new ApplicationUser();
+            _userManagerMock.Setup(u => u.GetUserAsync(It.IsAny<ClaimsPrincipal>())).ReturnsAsync(user);
+            _userManagerMock.Setup(u => u.UpdateAsync(user))
+                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "Update failed" }));
 
-        _userManagerMock.Setup(u => u.UpdateAsync(user))
-            .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "Update failed" }));
+            _imageServiceMock
+                .Setup(s => s.SaveImageAsync(It.IsAny<IFormFile>(), "profile"))
+                .ReturnsAsync("/images/profile/test.jpg");
 
-        var fileMock = new Mock<IFormFile>();
-        fileMock.Setup(f => f.Length).Returns(10);
-        fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
-        fileMock.Setup(f => f.FileName).Returns("test.jpg");
-        fileMock.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default))
-            .Returns(Task.CompletedTask);
+            var fileMock = new Mock<IFormFile>();
+            fileMock.Setup(f => f.Length).Returns(10);
+            fileMock.Setup(f => f.ContentType).Returns("image/jpeg");
+            fileMock.Setup(f => f.FileName).Returns("test.jpg");
+            fileMock.Setup(f => f.CopyToAsync(It.IsAny<Stream>(), default)).Returns(Task.CompletedTask);
 
-        var controller = CreateController();
+            var controller = CreateController();
 
-        var result = await controller.UploadPhoto(fileMock.Object);
+            var result = await controller.UploadPhoto(fileMock.Object);
 
-        var viewResult = Assert.IsType<ViewResult>(result);
-        Assert.False(controller.ModelState.IsValid);
-        Assert.True(controller.ModelState.ContainsKey(""));
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.False(controller.ModelState.IsValid);
+            Assert.True(controller.ModelState.ContainsKey(""));
+        }
     }
 }

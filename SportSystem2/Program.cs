@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using SportSystem2.Data;
 using SportSystem2.Models;
 using SportSystem2.Services;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var smtpSettings = builder.Configuration.GetSection("SmtpSettings").Get<SmtpSettings>();
 builder.Services.AddSingleton(smtpSettings);
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
-builder.Services.AddScoped<IStandingsUpdater,StandingsUpdater>();
+builder.Services.AddScoped<IStandingsUpdater, StandingsUpdater>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportSystem2.Data;
 using SportSystem2.Helpers.SportSystem2.Helpers;
-using SportSystem2.Migrations;
 using SportSystem2.Models;
 using SportSystem2.Services;
 
@@ -13,9 +12,9 @@ namespace SportSystem2.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly ImageService _imageService;
+        private readonly IImageService _imageService;
         private readonly string UploadFolder = "teams";
-        public TeamsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, ImageService imageService)
+        public TeamsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IImageService imageService)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;

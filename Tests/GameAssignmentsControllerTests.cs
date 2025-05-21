@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace Tests
 {
@@ -44,7 +41,7 @@ namespace Tests
         {
             var context = GetDbContext();
 
-            var judge = new Judge {JudgeId = 1, ApplicationUserId = "judge1", FullName = "Name", QualificationLevel = "Unqualified" };
+            var judge = new Judge { JudgeId = 1, ApplicationUserId = "judge1", FullName = "Name", QualificationLevel = "Unqualified" };
             var teamA = new Team { TeamId = 1, Name = "Team A", City = "Vinnytsia" };
             var teamB = new Team { TeamId = 2, Name = "Team B", City = "Vinnytsia" };
             var tournament = new Tournament { TournamentId = 1, Name = "Championship" };
@@ -120,7 +117,7 @@ namespace Tests
         {
             var context = GetDbContext();
 
-            var judge = new Judge {JudgeId = 1, ApplicationUserId = "judge1", FullName = "Name", QualificationLevel = "Unqualified" };
+            var judge = new Judge { JudgeId = 1, ApplicationUserId = "judge1", FullName = "Name", QualificationLevel = "Unqualified" };
             var match = new SportSystem2.Models.Match { MatchId = 1 };
             var assignment = new GameAssignment
             {

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace SportSystem2.Models.DTO
+﻿namespace SportSystem2.Models.DTO
 {
     public class TeamStandingDTO
     {

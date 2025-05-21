@@ -6,9 +6,7 @@ using Moq;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using System.IO;
-using System.Threading.Tasks;
-using Xunit;
+using SportSystem2.Services;
 namespace Tests;
 public class TeamsControllerTests
 {
@@ -22,11 +20,19 @@ public class TeamsControllerTests
         return context;
     }
 
-    private IWebHostEnvironment GetMockEnvironment()
+    private Mock<IWebHostEnvironment> GetMockEnvironment()
     {
         var mockEnv = new Mock<IWebHostEnvironment>();
         mockEnv.Setup(m => m.WebRootPath).Returns(Directory.GetCurrentDirectory());
-        return mockEnv.Object;
+        return mockEnv;
+    }
+
+    private Mock<IImageService> GetMockImageService()
+    {
+        var mock = new Mock<IImageService>();
+        mock.Setup(s => s.SaveImageAsync(It.IsAny<IFormFile>(), It.IsAny<string>()))
+            .ReturnsAsync("fakepath.jpg");
+        return mock;
     }
 
     [Fact]
@@ -37,7 +43,7 @@ public class TeamsControllerTests
         context.Teams.Add(new Team { TeamId = 6, Name = "Team B", City = "Lviv" });
         await context.SaveChangesAsync();
 
-        var controller = new TeamsController(context, GetMockEnvironment());
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.Index();
 
@@ -49,7 +55,8 @@ public class TeamsControllerTests
     [Fact]
     public async Task Details_ReturnsNotFound_WhenIdIsNull()
     {
-        var controller = new TeamsController(GetInMemoryContext(), GetMockEnvironment());
+        var context = GetInMemoryContext();
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.Details(null);
 
@@ -60,7 +67,7 @@ public class TeamsControllerTests
     public async Task Details_ReturnsNotFound_WhenTeamDoesNotExist()
     {
         var context = GetInMemoryContext();
-        var controller = new TeamsController(context, GetMockEnvironment());
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.Details(999);
 
@@ -74,7 +81,7 @@ public class TeamsControllerTests
         context.Teams.Add(new Team { TeamId = 2, Name = "Test Team", City = "Vinnytsia" });
         await context.SaveChangesAsync();
 
-        var controller = new TeamsController(context, GetMockEnvironment());
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.Details(2);
 
@@ -92,7 +99,7 @@ public class TeamsControllerTests
         context.Teams.Add(team);
         await context.SaveChangesAsync();
 
-        var controller = new TeamsController(context, GetMockEnvironment());
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.DeleteConfirmed(1);
 
@@ -111,7 +118,7 @@ public class TeamsControllerTests
         context.Matches.Add(new SportSystem2.Models.Match { MatchId = 1, TeamAId = 1, TeamBId = 2 });
         await context.SaveChangesAsync();
 
-        var controller = new TeamsController(context, GetMockEnvironment());
+        var controller = new TeamsController(context, GetMockEnvironment().Object, GetMockImageService().Object);
 
         var result = await controller.DeleteConfirmed(1);
 

@@ -1,11 +1,11 @@
 ﻿
+using SportSystem2.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SportSystem2.Models;
 public class TeamStanding
 {
     [Key]
-    public int TeamStandingId { get; set; } 
+    public int TeamStandingId { get; set; }
 
     public int Position { get; set; }
 

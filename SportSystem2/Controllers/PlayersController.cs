@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportSystem2.Data;
 using SportSystem2.Helpers.SportSystem2.Helpers;
-using SportSystem2.Migrations;
 using SportSystem2.Models;
 using SportSystem2.Services;
 
@@ -54,20 +53,24 @@ namespace SportSystem2.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("PlayerId,TeamId,FullName,Position,BirthDate,Height,Weight,Gender,Number")] Player player, IFormFile? Photo)
         {
-            if (ImageValidator.FileIsNull(Photo))
+            /*if (ImageValidator.FileIsNull(Photo))
             {
                 ModelState.AddModelError("", "Please select a photo to upload.");
                 return View();
-            }
+            }*/
 
-            if (!ImageValidator.IsValidContentType(Photo.ContentType))
-            {
-                ModelState.AddModelError("", "Only JPG, PNG, and GIF images are allowed.");
-                return View();
-            }
             if (ModelState.IsValid)
             {
-                player.PhotoPath = await _imageService.SaveImageAsync(Photo, UploadFolder);
+                if (Photo != null && Photo.Length > 0)
+                {
+                    if (!ImageValidator.IsValidContentType(Photo.ContentType))
+                    {
+                        ModelState.AddModelError("", "Only JPG, PNG, and GIF images are allowed.");
+                        return View();
+                    }
+                    player.PhotoPath = await _imageService.SaveImageAsync(Photo, UploadFolder);
+
+                }
                 _context.Add(player);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Teams", new { id = player.TeamId });
@@ -94,17 +97,13 @@ namespace SportSystem2.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("PlayerId,TeamId,FullName,Position,BirthDate,Height,Weight,Gender,PhotoPath,Number")] Player player, IFormFile? Photo)
         {
             if (id != player.PlayerId) return NotFound();
-            if (ImageValidator.FileIsNull(Photo))
+            /*if (ImageValidator.FileIsNull(Photo))
             {
                 ModelState.AddModelError("", "Please select a photo to upload.");
                 return View();
-            }
+            }*/
 
-            if (!ImageValidator.IsValidContentType(Photo.ContentType))
-            {
-                ModelState.AddModelError("", "Only JPG, PNG, and GIF images are allowed.");
-                return View();
-            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -114,6 +113,11 @@ namespace SportSystem2.Controllers
 
                     if (Photo != null && Photo.Length > 0)
                     {
+                        if (!ImageValidator.IsValidContentType(Photo.ContentType))
+                        {
+                            ModelState.AddModelError("", "Only JPG, PNG, and GIF images are allowed.");
+                            return View();
+                        }
                         _imageService.DeleteImage(existingPlayer.PhotoPath, UploadFolder);
                         player.PhotoPath = await _imageService.SaveImageAsync(Photo, UploadFolder);
                     }

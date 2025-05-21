@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using Xunit;
+using SportSystem2.Services;
 namespace Tests;
 public class PlayersControllerTests
 {
@@ -40,19 +34,19 @@ public class PlayersControllerTests
         return context;
     }
 
-    private Mock<IWebHostEnvironment> GetMockEnvironment()
+    private Mock<IImageService> GetMockImageService()
     {
-        var mockEnv = new Mock<IWebHostEnvironment>();
-        mockEnv.Setup(m => m.WebRootPath).Returns(Directory.GetCurrentDirectory());
-        return mockEnv;
+        var mock = new Mock<IImageService>();
+        mock.Setup(s => s.SaveImageAsync(It.IsAny<IFormFile>(), It.IsAny<string>()))
+            .ReturnsAsync("fakepath.jpg");
+        return mock;
     }
 
     [Fact]
     public async Task Index_ReturnsViewResult_WithListOfPlayers()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Index();
 
@@ -65,8 +59,7 @@ public class PlayersControllerTests
     public async Task Details_ReturnsNotFound_WhenIdIsNull()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Details(null);
 
@@ -77,8 +70,7 @@ public class PlayersControllerTests
     public async Task Details_ReturnsNotFound_WhenPlayerDoesNotExist()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Details(999);
 
@@ -89,8 +81,7 @@ public class PlayersControllerTests
     public async Task Details_ReturnsViewResult_WithPlayer()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Details(1);
 
@@ -103,8 +94,7 @@ public class PlayersControllerTests
     public void Create_Get_ReturnsViewResult_WithTeamId()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = controller.Create(1);
 
@@ -116,8 +106,7 @@ public class PlayersControllerTests
     public async Task Create_Post_ValidPlayer_AddsPlayerAndRedirects()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var newPlayer = new Player
         {
@@ -144,8 +133,7 @@ public class PlayersControllerTests
     public async Task Edit_Get_ReturnsNotFound_WhenIdIsNull()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Edit(null);
 
@@ -156,8 +144,7 @@ public class PlayersControllerTests
     public async Task Edit_Get_ReturnsNotFound_WhenPlayerDoesNotExist()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Edit(999);
 
@@ -168,8 +155,7 @@ public class PlayersControllerTests
     public async Task Edit_Get_ReturnsViewResult_WithPlayer()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var result = await controller.Edit(1);
 
@@ -182,8 +168,7 @@ public class PlayersControllerTests
     public async Task DeleteConfirmed_DeletesPlayer_WhenNoRelatedEvents()
     {
         var context = GetDbContext();
-        var env = GetMockEnvironment().Object;
-        var controller = new PlayersController(context, env);
+        var controller = new PlayersController(context, GetMockImageService().Object);
 
         var playerCountBefore = context.Players.Count();
 

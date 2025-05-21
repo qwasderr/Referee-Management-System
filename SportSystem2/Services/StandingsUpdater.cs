@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SportSystem2.Data;
-using SportSystem2.Models;
 
 namespace SportSystem2.Services
 {

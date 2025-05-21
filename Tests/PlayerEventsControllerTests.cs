@@ -5,10 +5,6 @@ using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
 using SportSystem2.Services;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
 namespace Tests;
 public class PlayerEventsControllerTests
 {

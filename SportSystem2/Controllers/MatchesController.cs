@@ -5,9 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using SportSystem2.Data;
 using SportSystem2.Models;
 using SportSystem2.Services;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SportSystem2.Controllers
 {

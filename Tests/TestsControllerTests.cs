@@ -3,10 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using System;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
 namespace Tests;
 public class TestsControllerTests
 {

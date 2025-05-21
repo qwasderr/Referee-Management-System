@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using System.ComponentModel.DataAnnotations;
 using SportSystem2.Models.DTOs;
 
 namespace SportSystem2.Controllers
@@ -32,7 +31,7 @@ namespace SportSystem2.Controllers
             public DateTime? LastAttestationDate { get; set; }
             public string AvatarUrl { get; set; } = "/images/default-avatar.png";
         }*/
-       
+
         public async Task<IActionResult> Index()
         {
             var judges = await _context.Judges
@@ -242,10 +241,10 @@ namespace SportSystem2.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var judge = await _context.Judges
-                .Include(j => j.Matches)            
-                .Include(j => j.MatchAnalyses)      
-                .Include(j => j.GameAssignments)    
-                .Include(j => j.TestResults)        
+                .Include(j => j.Matches)
+                .Include(j => j.MatchAnalyses)
+                .Include(j => j.GameAssignments)
+                .Include(j => j.TestResults)
                 .FirstOrDefaultAsync(j => j.JudgeId == id);
 
             if (judge == null)

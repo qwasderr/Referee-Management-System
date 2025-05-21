@@ -72,7 +72,7 @@ namespace SportSystem2.Data
                 .WithMany(tr => tr.Matches)
                 .HasForeignKey(m => m.TournamentRoundId)
                 .OnDelete(DeleteBehavior.Restrict);
-         
+
 
         }
 

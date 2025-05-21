@@ -30,7 +30,7 @@ public class AccountController : Controller
             ModelState.AddModelError("", "Please select a photo to upload.");
             return View();
         }
-        
+
         if (!ImageValidator.IsValidContentType(photo.ContentType))
         {
             ModelState.AddModelError("", "Only JPG, PNG, and GIF images are allowed.");
@@ -43,7 +43,7 @@ public class AccountController : Controller
             return NotFound();
         }
 
-       
+
         if (!string.IsNullOrEmpty(user.PhotoUrl))
         {
             _imageService.DeleteImage(user.PhotoUrl, UploadFolder);

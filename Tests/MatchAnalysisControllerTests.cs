@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using Xunit;
+using System.Security.Claims;
 namespace Tests;
 public class MatchAnalysisControllerTests
 {
@@ -35,7 +30,7 @@ public class MatchAnalysisControllerTests
         var context = GetInMemoryDbContext();
         var judge = new Judge { JudgeId = 1, FullName = "Judge1", QualificationLevel = "Unqualified", ApplicationUserId = Guid.NewGuid().ToString() };
         var match = new SportSystem2.Models.Match { MatchId = 1, TeamA = new Team { Name = "A", City = "Kyiv" }, TeamB = new Team { Name = "B", City = "Kyiv" }, Tournament = new Tournament { Name = "Tour" }, TournamentRound = new TournamentRound { RoundName = "Round1", Location = "Kyiv" } };
-        
+
         context.Matches.Add(match);
         context.Judges.Add(judge);
         var analysis = new MatchAnalysis

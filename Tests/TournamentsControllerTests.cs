@@ -3,10 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using SportSystem2.Controllers;
 using SportSystem2.Data;
 using SportSystem2.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
 namespace Tests;
 public class TournamentsControllerTests
 {
@@ -20,7 +16,7 @@ public class TournamentsControllerTests
 
         if (!context.Tournaments.Any())
         {
-            context.Tournaments.Add(new Tournament { TournamentId = 1, Name = "Test Tournament", Type = TournamentType.GroupStage } );
+            context.Tournaments.Add(new Tournament { TournamentId = 1, Name = "Test Tournament", Type = TournamentType.GroupStage });
             context.SaveChanges();
         }
 
