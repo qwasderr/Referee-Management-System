@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Game Assignment Details" xml:space="preserve">
+    <value>Деталі призначення на гру</value>
+  </data>
+	<data name="Assignment Information" xml:space="preserve">
+    <value>Інформація про призначення</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Суддя</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

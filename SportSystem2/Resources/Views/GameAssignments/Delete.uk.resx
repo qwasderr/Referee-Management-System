@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Delete Game Assignment" xml:space="preserve">
+    <value>Видалити призначення на гру</value>
+  </data>
+	<data name="Are you sure you want to delete this assignment?" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити це призначення?</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Суддя</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

@@ -1,0 +1,26 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Create Role"];
+}
+
+<h2>@Localizer["Create New Role"]</h2>
+
+<form method="post" asp-action="CreateRole">
+    <div class="form-group">
+        <label for="roleName">@Localizer["Role Name"]</label>
+        <input type="text" name="roleName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">@Localizer["Create"]</button>
+    <a asp-action="ListRoles" class="btn btn-secondary mt-2">@Localizer["Back to List"]</a>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@error.ErrorMessage</div>
+        }
+    </div>
+}

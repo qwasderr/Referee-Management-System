@@ -1,0 +1,102 @@
+﻿@model IEnumerable<SportSystem2.Models.TournamentRound>
+
+@using Microsoft.AspNetCore.Identity
+@using SportSystem2.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    var tournamentId = ViewData["TournamentId"] as int?;
+    var tournamentName = ViewData["TournamentName"] as string;
+    ViewData["Title"] = !string.IsNullOrEmpty(tournamentName)
+        ? Localizer["Rounds for {0}", tournamentName]
+        : Localizer["Tournament Rounds"];
+    var isAdmin = HttpContextAccessor.HttpContext.User.IsInRole("Admin");
+}
+
+<h1 class="mb-4">@Localizer["Tournament Rounds"]</h1>
+
+@if (!string.IsNullOrEmpty(tournamentName))
+{
+    <h4>@Localizer["For tournament:"] <strong>@tournamentName</strong></h4>
+
+    <div class="mb-3 d-flex justify-content-between align-items-center">
+        @if (isAdmin)
+        {
+            <a asp-action="Create" asp-route-tournamentId="@(tournamentId ?? 0)" class="btn btn-primary">
+                @Localizer["+ Create New Round"]
+            </a>
+        }
+
+        @if (tournamentId.HasValue)
+        {
+            <a asp-controller="Tournaments" asp-action="Index" class="btn btn-outline-secondary">
+                @Localizer["← Back to Tournaments"]
+            </a>
+        }
+    </div>
+}
+else
+{
+    @if (isAdmin)
+    {
+        <div class="mb-3">
+            <a asp-action="Create" class="btn btn-primary">@Localizer["+ Create New Round"]</a>
+        </div>
+    }
+}
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    @if (tournamentId == null)
+                    {
+                        <th>@Localizer["Tournament"]</th>
+                    }
+                    <th>@Localizer["Round Name"]</th>
+                    <th>@Localizer["Location"]</th>
+                    <th>@Localizer["Start Date & Time"]</th>
+                    <th>@Localizer["End Date & Time"]</th>
+                    <th style="width:@(isAdmin ? "260px" : "180px");">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (tournamentId == null)
+                        {
+                            <td>@item.Tournament?.Name</td>
+                        }
+                        <td>@item.RoundName</td>
+                        <td>@item.Location</td>
+                        <td>@(item.StartDate.HasValue ? item.StartDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+                        <td>@(item.EndDate.HasValue ? item.EndDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-info me-1">
+                                @Localizer["Details"]
+                            </a>
+                            <a asp-controller="Matches" asp-action="Index" asp-route-tournamentRoundId="@item.RoundId"
+                               class="btn btn-sm btn-outline-success me-1">
+                                @Localizer["Matches"]
+                            </a>
+
+                            @if (isAdmin)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-primary me-1">
+                                    @Localizer["Edit"]
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-danger">
+                                    @Localizer["Delete"]
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

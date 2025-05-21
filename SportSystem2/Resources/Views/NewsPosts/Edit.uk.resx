@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit News Post" xml:space="preserve">
+    <value>Редагувати новину</value>
+  </data>
+	<data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+	<data name="Edit news title here..." xml:space="preserve">
+    <value>Відредагуйте заголовок новини тут...</value>
+  </data>
+	<data name="Content" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+	<data name="Edit the news content here..." xml:space="preserve">
+    <value>Відредагуйте зміст новини тут...</value>
+  </data>
+	<data name="Upload Photo (optional)" xml:space="preserve">
+    <value>Завантажити фото (необов’язково)</value>
+  </data>
+	<data name="Allowed formats: JPG, PNG, GIF. Max size: 2MB." xml:space="preserve">
+    <value>Дозволені формати: JPG, PNG, GIF. Максимальний розмір: 2 МБ.</value>
+  </data>
+	<data name="Current Photo" xml:space="preserve">
+    <value>Поточне фото</value>
+  </data>
+	<data name="Photo Preview" xml:space="preserve">
+    <value>Попередній перегляд фото</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+	<data name="Please select a valid image file." xml:space="preserve">
+    <value>Будь ласка, оберіть валідний файл зображення.</value>
+  </data>
+	<data name="File size exceeds 2MB limit." xml:space="preserve">
+    <value>Розмір файлу перевищує ліміт 2 МБ.</value>
+  </data>
+</root>

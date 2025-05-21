@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SportSystem2.Models.DTOs.JudgeDTO>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Judges List"];
+}
+
+<h1 class="mb-4">@Localizer["Judges List"]</h1>
+
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        <a class="btn btn-primary" asp-action="Create">@Localizer["Create New Judge"]</a>
+    }
+</p>
+
+<table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th style="width: 60px;">@Localizer["Avatar"]</th>
+            <th>@Localizer["Full Name"]</th>
+            <th>@Localizer["Qualification Level"]</th>
+            <th>@Localizer["Last Attestation Date"]</th>
+            <th style="width: 180px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.AvatarUrl" alt="@Localizer["Avatar"]" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" />
+                </td>
+                <td>@item.FullName</td>
+                <td>@item.QualificationLevel</td>
+                <td>
+                    @if (item.LastAttestationDate.HasValue)
+                    {
+                        @item.LastAttestationDate.Value.ToString("yyyy-MM-dd")
+                    }
+                    else
+                    {
+                        <em>@Localizer["Not set"]</em>
+                    }
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-sm btn-outline-primary me-1" asp-action="Edit" asp-route-id="@item.JudgeId">@Localizer["Edit"]</a>
+                        <a class="btn btn-sm btn-outline-danger me-1" asp-action="Delete" asp-route-id="@item.JudgeId">@Localizer["Delete"]</a>
+                    }
+                    <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@item.JudgeId">@Localizer["Details"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

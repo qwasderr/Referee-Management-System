@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<SportSystem2.Models.Player>
+
+@{
+    ViewData["Title"] = Localizer["Players"];
+}
+
+<h1 class="mb-4">@Localizer["Players"]</h1>
+
+<div class="mb-3">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">+ @Localizer["Create New Player"]</a>
+    }
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 60px;">@Localizer["Photo"]</th>
+                    <th>@Localizer["Team"]</th>
+                    <th>@Localizer["Full Name"]</th>
+                    <th>@Localizer["Position"]</th>
+                    <th>@Localizer["Number"]</th>
+                    <th>@Localizer["Birth Date"]</th>
+                    <th>@Localizer["Age"]</th>
+                    <th>@Localizer["Height (cm)"]</th>
+                    <th>@Localizer["Weight (kg)"]</th>
+                    <th>@Localizer["Gender"]</th>
+                    <th style="width: 240px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @if (!string.IsNullOrEmpty(item.PhotoPath))
+                            {
+                                <img src="@item.PhotoPath" alt="@Localizer["Photo of {0}", item.FullName]"
+                                     class="rounded-circle" style="width: 100px; height: 130px; object-fit: cover;" />
+                            }
+                            else
+                            {
+                                <div class="bg-secondary rounded-circle d-inline-block"
+                                     style="width: 100px; height: 130px;"></div>
+                            }
+                        </td>
+                        <td>@item.Team?.Name</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Position</td>
+                        <td>@item.Number</td>
+                        <td>@item.BirthDate.ToShortDateString()</td>
+                        <td>@item.Age</td>
+                        <td>@item.Height</td>
+                        <td>@item.Weight</td>
+                        <td>@item.Gender</td>
+                        <td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.PlayerId" class="btn btn-sm btn-outline-primary me-1">@Localizer["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.PlayerId" class="btn btn-sm btn-outline-danger me-1">@Localizer["Delete"]</a>
+                            }
+                            <a asp-action="Details" asp-route-id="@item.PlayerId" class="btn btn-sm btn-outline-info">@Localizer["Details"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

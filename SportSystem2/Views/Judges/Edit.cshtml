@@ -1,0 +1,47 @@
+﻿@model SportSystem2.Models.DTOs.JudgeEditDTO
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Edit Judge"];
+}
+
+<h1 class="mb-4">@Localizer["Edit Judge"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <input type="hidden" asp-for="JudgeId" />
+
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label">@Localizer["Full Name"]</label>
+                <input asp-for="FullName" class="form-control" placeholder="@Localizer["Enter full name"]" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="QualificationLevel" class="form-label">@Localizer["Qualification Level"]</label>
+                <input asp-for="QualificationLevel" class="form-control" placeholder="@Localizer["Enter qualification level"]" />
+                <span asp-validation-for="QualificationLevel" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LastAttestationDate" class="form-label">@Localizer["Last Attestation Date"]</label>
+                <input asp-for="LastAttestationDate" class="form-control" type="date" />
+                <span asp-validation-for="LastAttestationDate" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="ApplicationUserId" />
+
+            <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">@Localizer["Back to List"]</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Judge</value>
+  </data>
+	<data name="ApplicationUser" xml:space="preserve">
+    <value>Application User</value>
+  </data>
+	<data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+	<data name="QualificationLevel" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+	<data name="LastAttestationDate" xml:space="preserve">
+    <value>Last Attestation Date</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

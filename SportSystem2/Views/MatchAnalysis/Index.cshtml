@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SportSystem2.Models.MatchAnalysis>
+
+@using Microsoft.AspNetCore.Identity
+@using SportSystem2.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["MatchAnalysesTitle"];
+    var isAdmin = HttpContextAccessor.HttpContext.User.IsInRole("Admin");
+    var currentUserId = UserManager.GetUserId(User);
+}
+
+<h1 class="mb-4 text-center text-primary fw-bold">@Localizer["MatchAnalysesFeed"]</h1>
+
+@if (isAdmin)
+{
+    <div class="text-end mb-4">
+        <a asp-action="Create" class="btn btn-success btn-lg">@Localizer["NewMatchAnalysis"]</a>
+    </div>
+}
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+                @if (!string.IsNullOrEmpty(item.AttachmentUrl) && (item.AttachmentUrl.Contains("youtube.com") || item.AttachmentUrl.Contains("youtu.be")))
+                {
+                    string embedUrl = item.AttachmentUrl.Replace("watch?v=", "embed/");
+                    <div class="ratio ratio-16x9">
+                        <iframe class="card-img-top" src="@embedUrl" title="Video" allowfullscreen></iframe>
+                    </div>
+                }
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">
+                        @(item.Content != null && item.Content.Length > 150
+                            ? item.Content[..150] + "..."
+                            : item.Content)
+                    </p>
+
+                    <div class="mt-auto">
+                        <p class="text-muted small mb-1">
+                            <strong>@Localizer["Match"]:</strong>
+                            @{
+                                var selectList = ViewData["MatchesDescriptions"] as SelectList;
+                                var dict = selectList?.ToDictionary(x => int.Parse(x.Value), x => x.Text);
+                                var desc = dict != null && dict.TryGetValue(item.MatchId, out var foundDesc)
+                                ? foundDesc
+                                : item.MatchId.ToString();
+                            }
+                            @desc
+                        </p>
+                        <p class="text-muted small mb-1"><strong>@Localizer["CreatedBy"]:</strong> @item.CreatedByJudge?.FullName</p>
+                        <p class="text-muted small mb-1"><strong>@Localizer["CreatedAt"]:</strong> @item.CreatedAt.ToString("g")</p>
+                        <p class="text-muted small mb-2"><strong>@Localizer["LastEdited"]:</strong> @item.LastEditedAt?.ToString("g")</p>
+
+                        <p class="mb-2">
+                            <strong>@Localizer["From"]:</strong>
+                            @if (item.MinuteFrom.HasValue && !string.IsNullOrEmpty(item.AttachmentUrl))
+                            {
+                                var fromSec = (int)item.MinuteFrom.Value.TotalSeconds;
+                                var link = item.AttachmentUrl.Contains("?") ? $"{item.AttachmentUrl}&t={fromSec}" : $"{item.AttachmentUrl}?t={fromSec}";
+                                <a href="@link" target="_blank">@item.MinuteFrom.Value.ToString(@"hh\:mm\:ss")</a>
+                            }
+                            else
+                            {
+                                @item.MinuteFrom?.ToString(@"hh\:mm\:ss")
+                            }
+
+                            |
+                            <strong>@Localizer["To"]:</strong>
+                            @if (item.MinuteTo.HasValue && !string.IsNullOrEmpty(item.AttachmentUrl))
+                            {
+                                var toSec = (int)item.MinuteTo.Value.TotalSeconds;
+                                var link = item.AttachmentUrl.Contains("?") ? $"{item.AttachmentUrl}&t={toSec}" : $"{item.AttachmentUrl}?t={toSec}";
+                                <a href="@link" target="_blank">@item.MinuteTo.Value.ToString(@"hh\:mm\:ss")</a>
+                            }
+                            else
+                            {
+                                @item.MinuteTo?.ToString(@"hh\:mm\:ss")
+                            }
+                        </p>
+
+                        <div class="btn-group w-100">
+                            <a asp-action="Details" asp-route-id="@item.MatchAnalysisId" class="btn btn-outline-info btn-sm">@Localizer["Details"]</a>
+                            @if (isAdmin || item.CreatedByJudge?.ApplicationUserId == currentUserId)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.MatchAnalysisId" class="btn btn-outline-primary btn-sm">@Localizer["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.MatchAnalysisId" class="btn btn-outline-danger btn-sm">@Localizer["Delete"]</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

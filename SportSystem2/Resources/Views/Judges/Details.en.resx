@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="JudgeDetails" xml:space="preserve">
+    <value>Judge Details</value>
+  </data>
+	<data name="JudgeAvatarAlt" xml:space="preserve">
+    <value>Judge Avatar</value>
+  </data>
+	<data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+	<data name="NotAvailable" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+	<data name="QualificationLevel" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+	<data name="LastAttestationDate" xml:space="preserve">
+    <value>Last Attestation Date</value>
+  </data>
+	<data name="MatchesOfficiated" xml:space="preserve">
+    <value>Matches Officiated</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+	<data name="Teams" xml:space="preserve">
+    <value>Teams</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="Round" xml:space="preserve">
+    <value>Round</value>
+  </data>
+	<data name="MatchAnalyses" xml:space="preserve">
+    <value>Match Analyses</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Match Date</value>
+  </data>
+	<data name="AnalysisSummary" xml:space="preserve">
+    <value>Analysis Summary</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+	<data name="ViewDetails" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

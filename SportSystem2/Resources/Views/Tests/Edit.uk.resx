@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="EditTest_Title" xml:space="preserve">
+    <value>Редагувати тест</value>
+  </data>
+	<data name="EditTest_Header" xml:space="preserve">
+    <value>Редагувати тест</value>
+  </data>
+	<data name="EditTest_Label_Title" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="EditTest_Label_TestUrl" xml:space="preserve">
+    <value>Посилання на тест</value>
+  </data>
+	<data name="EditTest_Button_Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="EditTest_Button_BackToList" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+</root>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Add Role to User" xml:space="preserve">
+    <value>Додати роль користувачу</value>
+  </data>
+	<data name="Select User" xml:space="preserve">
+    <value>Виберіть користувача</value>
+  </data>
+	<data name="Select a user" xml:space="preserve">
+    <value>-- Виберіть користувача --</value>
+  </data>
+	<data name="Select Role" xml:space="preserve">
+    <value>Виберіть роль</value>
+  </data>
+	<data name="Select a role" xml:space="preserve">
+    <value>-- Виберіть роль --</value>
+  </data>
+	<data name="Add Role" xml:space="preserve">
+    <value>Додати роль</value>
+  </data>
+	<data name="Back to Roles List" xml:space="preserve">
+    <value>Повернутися до списку ролей</value>
+  </data>
+	<data name="Select an option" xml:space="preserve">
+    <value>Виберіть опцію</value>
+  </data>
+</root>

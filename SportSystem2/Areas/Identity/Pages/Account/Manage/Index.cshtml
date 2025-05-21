@@ -1,0 +1,64 @@
+﻿@page
+@model SportSystem2.Areas.Identity.Pages.Account.Manage.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = SportSystem2.Areas.Identity.Pages.Account.Manage.ManageNavPages.Index;
+}
+
+<h3 class="mb-4">@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-3">
+        <nav class="nav flex-column nav-pills">
+            <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+            <a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" asp-area="Identity" asp-page="/Account/Manage/Email">Change Email</a>
+            <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-area="Identity" asp-page="/Account/Manage/ChangePassword">Change Password</a>
+            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" asp-area="Identity" asp-page="/Account/Manage/PersonalData">Personal Data</a>
+            <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" asp-area="Identity" asp-page="/Account/Manage/TwoFactorAuthentication">Two Factor Authentication</a>
+        </nav>
+    </div>
+
+    <div class="col-md-9">
+        <partial name="_StatusMessage" for="StatusMessage" />
+
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.FullName" class="form-control" placeholder="Full Name" />
+                <label asp-for="Input.FullName">Full Name</label>
+                <span asp-validation-for="Input.FullName" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole("Judge"))
+            {
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" value="@Model.QualificationLevel" readonly />
+                    <label>Qualification Level</label>
+                </div>
+            }
+            <div class="mb-4">
+                <label class="form-label">Current Avatar</label><br />
+                @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+                {
+                    <img src="@Model.AvatarUrl" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px;" />
+                }
+                else
+                {
+                    <p class="text-muted">No avatar uploaded.</p>
+                }
+            </div>
+
+            <div class="mb-4">
+                <label for="AvatarFile" class="form-label">Upload New Avatar</label>
+                <input type="file" class="form-control" id="AvatarFile" name="AvatarFile" accept="image/*" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="DeleteMatch" xml:space="preserve">
+    <value>Delete Match</value>
+  </data>
+	<data name="ConfirmDeleteMessage" xml:space="preserve">
+    <value>Are you sure you want to delete this match?</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Match Date</value>
+  </data>
+	<data name="TeamA" xml:space="preserve">
+    <value>Team A</value>
+  </data>
+	<data name="TeamB" xml:space="preserve">
+    <value>Team B</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="TournamentRound" xml:space="preserve">
+    <value>Tournament Round</value>
+  </data>
+	<data name="DeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

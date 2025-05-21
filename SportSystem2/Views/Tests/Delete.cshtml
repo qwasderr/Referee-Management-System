@@ -1,0 +1,32 @@
+﻿@model SportSystem2.Models.Test
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["DeleteTest_Title"];
+}
+
+<h1 class="mb-4 text-danger">@Localizer["DeleteTest_Header"]</h1>
+
+<div class="card shadow-sm border-danger">
+    <div class="card-body">
+        <h5 class="card-title text-danger mb-3">@Localizer["DeleteTest_ConfirmMessage"]</h5>
+
+        <dl class="row mb-4">
+            <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["DeleteTest_Label_Title"]</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["DeleteTest_Label_TestUrl"]</dt>
+            <dd class="col-sm-9">@Model.TestUrl</dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="TestId" />
+            <button type="submit" class="btn btn-danger me-2">
+                <i class="bi bi-trash"></i> @Localizer["DeleteTest_Button_Delete"]
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["DeleteTest_Button_BackToList"]</a>
+        </form>
+    </div>
+</div>

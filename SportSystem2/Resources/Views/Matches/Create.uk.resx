@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Match" xml:space="preserve">
+    <value>Створити матч</value>
+  </data>
+	<data name="Match Date" xml:space="preserve">
+    <value>Дата матчу</value>
+  </data>
+	<data name="Team A" xml:space="preserve">
+    <value>Команда А</value>
+  </data>
+	<data name="Team B" xml:space="preserve">
+    <value>Команда Б</value>
+  </data>
+	<data name="Select Team A" xml:space="preserve">
+    <value>Оберіть команду А</value>
+  </data>
+	<data name="Select Team B" xml:space="preserve">
+    <value>Оберіть команду Б</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+</root>

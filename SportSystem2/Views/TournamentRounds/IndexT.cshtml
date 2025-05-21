@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SportSystem2.Models.TournamentRound>
+
+@{
+    ViewData["Title"] = "Tournament Rounds";
+    var tournamentId = ViewData["TournamentId"] as int?;
+    var tournamentName = ViewData["TournamentName"] as string;
+}
+
+<h1 class="mb-4">Tournament Rounds</h1>
+
+@if (!string.IsNullOrEmpty(tournamentName))
+{
+    <h4>For tournament: <strong>@tournamentName</strong></h4>
+}
+
+<div class="mb-3 d-flex justify-content-between align-items-center">
+    <a asp-action="Create" asp-route-tournamentId="@(tournamentId ?? 0)" class="btn btn-primary">+ Create New Round</a>
+    @if (tournamentId.HasValue)
+    {
+        <a asp-controller="Tournaments" asp-action="Index" class="btn btn-outline-secondary">← Back to Tournaments</a>
+    }
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0 table-responsive">
+        <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Tournament</th>
+                    <th>Round Name</th>
+                    <th>Location</th>
+                    <th>Start Date & Time</th>
+                    <th>End Date & Time</th>
+                    <th style="width: 180px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center fst-italic text-muted">No tournament rounds found.</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Tournament?.Name</td>
+                            <td>@item.RoundName</td>
+                            <td>@item.Location</td>
+                            <td>@(item.StartDate.HasValue ? item.StartDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+                            <td>@(item.EndDate.HasValue ? item.EndDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-primary me-1">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-info me-1">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.RoundId" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

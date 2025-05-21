@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Create Game Assignment" xml:space="preserve">
+    <value>Створити призначення на гру</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Суддя</value>
+  </data>
+	<data name="Select judge" xml:space="preserve">
+    <value>Оберіть суддю</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Select role" xml:space="preserve">
+    <value>Оберіть роль</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

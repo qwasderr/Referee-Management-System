@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="CreateMatchAnalysis_Title" xml:space="preserve">
+    <value>Create Match Analysis</value>
+  </data>
+	<data name="CreateMatchAnalysis_Header" xml:space="preserve">
+    <value>Create Match Analysis</value>
+  </data>
+	<data name="Match_Label" xml:space="preserve">
+    <value>Match</value>
+  </data>
+	<data name="SelectMatch_Prompt" xml:space="preserve">
+    <value>Select match</value>
+  </data>
+	<data name="Title_Label" xml:space="preserve">
+    <value>Title</value>
+  </data>
+	<data name="Content_Label" xml:space="preserve">
+    <value>Content</value>
+  </data>
+	<data name="CreatedByJudge_Label" xml:space="preserve">
+    <value>Created By Judge</value>
+  </data>
+	<data name="SelectJudge_Prompt" xml:space="preserve">
+    <value>Select judge</value>
+  </data>
+	<data name="AttachmentUrl_Label" xml:space="preserve">
+    <value>Attachment URL</value>
+  </data>
+	<data name="MinuteFrom_Label" xml:space="preserve">
+    <value>Minute From</value>
+  </data>
+	<data name="MinuteTo_Label" xml:space="preserve">
+    <value>Minute To</value>
+  </data>
+	<data name="Create_Button" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="BackToList_Button" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

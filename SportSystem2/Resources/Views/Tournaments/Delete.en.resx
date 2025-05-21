@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Delete Tournament" xml:space="preserve">
+    <value>Delete Tournament</value>
+  </data>
+	<data name="Are you sure you want to delete this tournament?" xml:space="preserve">
+    <value>Are you sure you want to delete this tournament?</value>
+  </data>
+	<data name="Tournament Name" xml:space="preserve">
+    <value>Tournament Name</value>
+  </data>
+	<data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

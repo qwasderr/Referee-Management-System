@@ -1,0 +1,170 @@
+﻿@model SportSystem2.Models.Match
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@using SportSystem2.Models
+@using SportSystem2.Services
+
+@{
+    ViewData["Title"] = Localizer["Match Details"];
+    int tournamentId = (int)(ViewData["TournamentId"] ?? 0);
+    int tournamentRoundId = (int)(ViewData["TournamentRoundId"] ?? 0);
+
+    var playerEvents = ViewData["PlayerEvents"] as List<PlayerEvent> ?? new List<PlayerEvent>();
+
+    var periods = playerEvents
+        .Select(pe => new { pe.PeriodType, pe.PeriodNumber })
+        .Distinct()
+        .OrderBy(p => p.PeriodType)
+        .ThenBy(p => p.PeriodNumber)
+        .ToList();
+
+    var homeEvents = playerEvents.Where(pe => pe.Player.TeamId == Model.TeamAId).ToList();
+    var awayEvents = playerEvents.Where(pe => pe.Player.TeamId == Model.TeamBId).ToList();
+
+    var matchResults = ViewData["MatchResults"] as List<SportSystem2.Models.MatchResult> ?? new List<SportSystem2.Models.MatchResult>();
+
+    int scoreTeamA = matchResults.FirstOrDefault(mr => mr.TeamId == Model.TeamAId)?.Points ?? 0;
+    int scoreTeamB = matchResults.FirstOrDefault(mr => mr.TeamId == Model.TeamBId)?.Points ?? 0;
+
+    var gameAssignments = ViewData["GameAssignments"] as List<GameAssignment> ?? new List<GameAssignment>();
+}
+
+<h1 class="mb-4">@Localizer["Match Details"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-primary mb-3">@Localizer["Match Location and Time"]</h5>
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Date and Time"]</dt>
+        <dd class="col-sm-9">@Model.Date.ToString("dd.MM.yyyy HH:mm")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Location"]</dt>
+        <dd class="col-sm-9">@Model.TournamentRound?.Location</dd>
+    </dl>
+</div>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-primary mb-3">@Localizer["Match Information"]</h5>
+
+    <div class="row mb-3 align-items-center">
+        <div class="col-md-5 text-center">
+            <img src="@Url.Content(Model.TeamA?.PhotoPath ?? "/images/teams/default.png")" alt="@($"{Model.TeamA?.Name} Logo")"
+                 class="img-fluid rounded shadow-sm mb-2"
+                 style="max-height: 150px;"
+                 onerror="this.onerror=null; this.src='/images/teams/default.png';" />
+            <h6 class="fw-bold">@Model.TeamA?.Name</h6>
+        </div>
+
+        <div class="col-md-2 text-center">
+            <h2 class="fw-bold text-dark">
+                <span class="@(scoreTeamA > scoreTeamB ? "text-success" : "")">@scoreTeamA</span> :
+                <span class="@(scoreTeamB > scoreTeamA ? "text-danger" : "")">@scoreTeamB</span>
+            </h2>
+            <div class="text-muted">@Localizer["Final Score"]</div>
+        </div>
+
+        <div class="col-md-5 text-center">
+            <img src="@Url.Content(Model.TeamB?.PhotoPath ?? "/images/teams/default.png")" alt="@($"{Model.TeamB?.Name} Logo")"
+                 class="img-fluid rounded shadow-sm mb-2"
+                 style="max-height: 150px;"
+                 onerror="this.onerror=null; this.src='/images/teams/default.png';" />
+            <h6 class="fw-bold">@Model.TeamB?.Name</h6>
+        </div>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Tournament"]</dt>
+        <dd class="col-sm-9">@Model.Tournament?.Name</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Tournament Round"]</dt>
+        <dd class="col-sm-9">@Model.TournamentRound?.RoundName</dd>
+    </dl>
+</div>
+
+<div class="mb-5">
+    <h5 class="text-primary mb-3">@Localizer["Player Events by Period"]</h5>
+
+    @foreach (var period in periods)
+    {
+        <div class="mb-4">
+            <h6>
+                @Localizer[period.PeriodType.ToString()] @period.PeriodNumber
+            </h6>
+
+            <div class="row">
+                <div class="col-6 border-end">
+                    <h6 class="text-success">@Model.TeamA?.Name</h6>
+                    @foreach (var ev in homeEvents.Where(e => e.PeriodType == period.PeriodType && e.PeriodNumber == period.PeriodNumber).OrderBy(e => e.Minute))
+                    {
+                        <div class="mb-2">
+                            <strong>@ev.Minute&apos; </strong> - @EventDescriptionBuilder.GetPlayerEventDescription(ev)
+
+                            @if (!string.IsNullOrEmpty(ev.Notes))
+                            {
+                                <div><em>@ev.Notes</em></div>
+                            }
+                        </div>
+                    }
+                    @if (!homeEvents.Any(e => e.PeriodType == period.PeriodType && e.PeriodNumber == period.PeriodNumber))
+                    {
+                        <div class="text-muted fst-italic small">@Localizer["No events"]</div>
+                    }
+                </div>
+
+                <div class="col-6">
+                    <h6 class="text-danger">@Model.TeamB?.Name</h6>
+                    @foreach (var ev in awayEvents.Where(e => e.PeriodType == period.PeriodType && e.PeriodNumber == period.PeriodNumber).OrderBy(e => e.Minute))
+                    {
+                        <div class="mb-2">
+                            <strong>@ev.Minute&apos; </strong> - @EventDescriptionBuilder.GetPlayerEventDescription(ev)
+
+                            @if (!string.IsNullOrEmpty(ev.Notes))
+                            {
+                                <div><em>@ev.Notes</em></div>
+                            }
+                        </div>
+                    }
+                    @if (!awayEvents.Any(e => e.PeriodType == period.PeriodType && e.PeriodNumber == period.PeriodNumber))
+                    {
+                        <div class="text-muted fst-italic small">@Localizer["No events"]</div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (gameAssignments.Any())
+{
+    <div class="card shadow-sm p-4 mb-4">
+        <h5 class="card-title text-primary mb-3">@Localizer["Assigned Judges"]</h5>
+
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">@Localizer["Judge Name"]</th>
+                    <th scope="col">@Localizer["Role"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var assignment in gameAssignments)
+                {
+                    <tr>
+                        <td>@assignment.Judge?.FullName</td>
+                        <td>@assignment.Role</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        @Localizer["No judges assigned to this match."]
+    </div>
+}
+
+<div class="d-flex justify-content-between">
+    <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Back to List"]</a>
+</div>

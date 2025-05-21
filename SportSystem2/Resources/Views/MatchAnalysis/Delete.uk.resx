@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="DeleteMatchAnalysisTitle" xml:space="preserve">
+    <value>Видалити аналіз матчу</value>
+  </data>
+	<data name="DeleteMatchAnalysisHeader" xml:space="preserve">
+    <value>Видалити аналіз матчу</value>
+  </data>
+	<data name="DeleteConfirmationMessage" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити цей аналіз?</value>
+  </data>
+	<data name="MatchLabel" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="NotSelected" xml:space="preserve">
+    <value>Не вибрано</value>
+  </data>
+	<data name="TitleLabel" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+	<data name="ContentLabel" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+	<data name="CreatedAtLabel" xml:space="preserve">
+    <value>Створено</value>
+  </data>
+	<data name="LastEditedAtLabel" xml:space="preserve">
+    <value>Остання зміна</value>
+  </data>
+	<data name="CreatedByJudgeLabel" xml:space="preserve">
+    <value>Створив суддя</value>
+  </data>
+	<data name="AttachmentUrlLabel" xml:space="preserve">
+    <value>Посилання на додаток</value>
+  </data>
+	<data name="MinuteFromLabel" xml:space="preserve">
+    <value>Хвилина від</value>
+  </data>
+	<data name="MinuteToLabel" xml:space="preserve">
+    <value>Хвилина до</value>
+  </data>
+	<data name="DeleteButton" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="BackToListButton" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+</root>

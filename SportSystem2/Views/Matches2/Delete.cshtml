@@ -1,0 +1,42 @@
+﻿@model SportSystem2.Models.Match
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["DeleteMatch"];
+    int tournamentId = (int)(ViewData["CurrentTournamentId"] ?? 0);
+    int tournamentRoundId = (int)(ViewData["CurrentTournamentRoundId"] ?? 0);
+}
+
+<h1 class="mb-4 text-danger">@Localizer["DeleteMatch"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-warning mb-3">@Localizer["ConfirmDeleteMessage"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["MatchDate"]</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Date)</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TeamA"]</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TeamA.City)</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TeamB"]</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TeamB.City)</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Tournament"]</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tournament.Name)</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TournamentRound"]</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.TournamentRound.Location)</dd>
+    </dl>
+
+    <form asp-action="Delete"
+          asp-route-id="@Model.MatchId">
+        <input type="hidden" asp-for="MatchId" />
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger">@Localizer["DeleteButton"]</button>
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">@Localizer["BackToList"]</a>
+        </div>
+    </form>
+</div>

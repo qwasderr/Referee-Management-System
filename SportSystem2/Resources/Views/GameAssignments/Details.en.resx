@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Game Assignment Details" xml:space="preserve">
+    <value>Game Assignment Details</value>
+  </data>
+	<data name="Assignment Information" xml:space="preserve">
+    <value>Assignment Information</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Judge</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Match</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

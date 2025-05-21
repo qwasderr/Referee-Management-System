@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Tournament Details" xml:space="preserve">
+    <value>Деталі турніру</value>
+  </data>
+	<data name="Tournament Information" xml:space="preserve">
+    <value>Інформація про турнір</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+	<data name="Standings" xml:space="preserve">
+    <value>Турнірна таблиця</value>
+  </data>
+	<data name="Pos" xml:space="preserve">
+    <value>Місце</value>
+  </data>
+	<data name="Team" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+	<data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+	<data name="Wins" xml:space="preserve">
+    <value>Перемоги</value>
+  </data>
+	<data name="Draws" xml:space="preserve">
+    <value>Нічиї</value>
+  </data>
+	<data name="Losses" xml:space="preserve">
+    <value>Поразки</value>
+  </data>
+	<data name="Points" xml:space="preserve">
+    <value>Очки</value>
+  </data>
+	<data name="Scored" xml:space="preserve">
+    <value>Забито</value>
+  </data>
+	<data name="Conceded" xml:space="preserve">
+    <value>Пропущено</value>
+  </data>
+	<data name="Diff" xml:space="preserve">
+    <value>Різниця</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+	<data name="Team Logo" xml:space="preserve">
+    <value>Логотип команди</value>
+  </data>
+</root>

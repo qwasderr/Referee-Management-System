@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="CreateTest_Title" xml:space="preserve">
+    <value>Create Test</value>
+  </data>
+	<data name="CreateTest_Header" xml:space="preserve">
+    <value>Create New Test</value>
+  </data>
+	<data name="CreateTest_Label_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+	<data name="CreateTest_Placeholder_Title" xml:space="preserve">
+    <value>Enter test title...</value>
+  </data>
+	<data name="CreateTest_Label_TestUrl" xml:space="preserve">
+    <value>Test URL</value>
+  </data>
+	<data name="CreateTest_Placeholder_TestUrl" xml:space="preserve">
+    <value>https://...</value>
+  </data>
+	<data name="CreateTest_Button_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="CreateTest_Button_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

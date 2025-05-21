@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="JudgeDetails" xml:space="preserve">
+    <value>Деталі судді</value>
+  </data>
+	<data name="JudgeAvatarAlt" xml:space="preserve">
+    <value>Аватар судді</value>
+  </data>
+	<data name="UserName" xml:space="preserve">
+    <value>Ім'я користувача</value>
+  </data>
+	<data name="NotAvailable" xml:space="preserve">
+    <value>Н/д</value>
+  </data>
+	<data name="QualificationLevel" xml:space="preserve">
+    <value>Рівень кваліфікації</value>
+  </data>
+	<data name="LastAttestationDate" xml:space="preserve">
+    <value>Дата останньої атестації</value>
+  </data>
+	<data name="MatchesOfficiated" xml:space="preserve">
+    <value>Матчі, які судив</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+	<data name="Teams" xml:space="preserve">
+    <value>Команди</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Турнір</value>
+  </data>
+	<data name="Round" xml:space="preserve">
+    <value>Раунд</value>
+  </data>
+	<data name="MatchAnalyses" xml:space="preserve">
+    <value>Аналізи матчів</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Дата матчу</value>
+  </data>
+	<data name="AnalysisSummary" xml:space="preserve">
+    <value>Короткий опис аналізу</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+	<data name="ViewDetails" xml:space="preserve">
+    <value>Переглянути деталі</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

@@ -1,0 +1,92 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Roles List"];
+}
+
+<h2>@Localizer["Roles List"]</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<p>
+    <a asp-action="CreateRole" class="btn btn-primary">@Localizer["Create New Role"]</a>
+    <a asp-action="AddRoleToUser" class="btn btn-secondary">@Localizer["Add Role To User"]</a>
+    <a asp-action="RemoveRoleFromUser" class="btn btn-warning">@Localizer["Remove Role From User"]</a>
+    <a asp-action="ListUsers" class="btn btn-info">@Localizer["Users List"]</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["Role Name"]</th>
+            <th>@Localizer["Actions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    <form id="deleteForm-@role.Id" asp-action="DeleteRole" method="post" style="display:inline">
+                        <input type="hidden" name="roleName" value="@role.Name" />
+                        <button type="button" class="btn btn-danger btn-sm" data-role-name="@role.Name" data-form-id="deleteForm-@role.Id" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                            @Localizer["Delete"]
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteLabel">@Localizer["Confirm Delete"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Localizer["Close"]"></button>
+            </div>
+            <div class="modal-body">
+                @Localizer["Are you sure you want to delete the role '{0}'?", "<span id=\"roleToDelete\"></span>"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                <button id="confirmDeleteBtn" type="button" class="btn btn-danger">@Localizer["Delete"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var formToSubmit;
+
+        var confirmDeleteModal = document.getElementById('confirmDeleteModal');
+        confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+
+            var roleName = button.getAttribute('data-role-name');
+            var formId = button.getAttribute('data-form-id');
+
+            document.getElementById('roleToDelete').textContent = roleName;
+
+            formToSubmit = document.getElementById(formId);
+        });
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+            if (formToSubmit) {
+                formToSubmit.submit();
+            }
+        });
+    </script>
+}

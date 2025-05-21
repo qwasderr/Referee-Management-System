@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="News Post Details" xml:space="preserve">
+    <value>News Post Details</value>
+  </data>
+	<data name="News Photo" xml:space="preserve">
+    <value>News Photo</value>
+  </data>
+	<data name="No photo available" xml:space="preserve">
+    <value>No photo available</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="MatchAnalysesTitle" xml:space="preserve">
+    <value>Аналізи матчів</value>
+  </data>
+	<data name="MatchAnalysesFeed" xml:space="preserve">
+    <value>Стрічка аналізів матчів</value>
+  </data>
+	<data name="NewMatchAnalysis" xml:space="preserve">
+    <value>+ Новий аналіз матчу</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="CreatedBy" xml:space="preserve">
+    <value>Створив</value>
+  </data>
+	<data name="CreatedAt" xml:space="preserve">
+    <value>Створено</value>
+  </data>
+	<data name="LastEdited" xml:space="preserve">
+    <value>Останнє редагування</value>
+  </data>
+	<data name="From" xml:space="preserve">
+    <value>З</value>
+  </data>
+	<data name="To" xml:space="preserve">
+    <value>По</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+</root>

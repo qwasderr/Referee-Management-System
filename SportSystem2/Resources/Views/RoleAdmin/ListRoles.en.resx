@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Roles List" xml:space="preserve">
+    <value>Roles List</value>
+  </data>
+	<data name="Create New Role" xml:space="preserve">
+    <value>Create New Role</value>
+  </data>
+	<data name="Add Role To User" xml:space="preserve">
+    <value>Add Role To User</value>
+  </data>
+	<data name="Remove Role From User" xml:space="preserve">
+    <value>Remove Role From User</value>
+  </data>
+	<data name="Users List" xml:space="preserve">
+    <value>Users List</value>
+  </data>
+	<data name="Role Name" xml:space="preserve">
+    <value>Role Name</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Confirm Delete" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
+	<data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+	<data name="Are you sure you want to delete the role '{0}'?" xml:space="preserve">
+    <value>Are you sure you want to delete the role '{0}'?</value>
+  </data>
+	<data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

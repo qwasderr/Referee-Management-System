@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Home Page" xml:space="preserve"><value>Головна сторінка</value></data>
+	<data name="Referee Management System" xml:space="preserve"><value>Система управління суддями</value></data>
+	<data name="Manage tournaments, assign judges, and analyze matches efficiently." xml:space="preserve">
+    <value>Керуйте турнірами, призначайте суддів та аналізуйте матчі ефективно.</value>
+  </data>
+	<data name="View Tournaments" xml:space="preserve"><value>Переглянути турніри</value></data>
+	<data name="Manage Matches" xml:space="preserve"><value>Управління матчами</value></data>
+	<data name="Create, edit, and view match results with detailed team info." xml:space="preserve">
+    <value>Створюйте, редагуйте та переглядайте результати матчів з детальною інформацією про команди.</value>
+  </data>
+	<data name="Go to Matches" xml:space="preserve"><value>Перейти до матчів</value></data>
+	<data name="Judges" xml:space="preserve"><value>Судді</value></data>
+	<data name="View judges, their profiles, and manage information." xml:space="preserve">
+    <value>Переглядайте суддів, їх профілі та керуйте інформацією.</value>
+  </data>
+	<data name="View Judges" xml:space="preserve"><value>Переглянути суддів</value></data>
+	<data name="Match Analysis" xml:space="preserve"><value>Аналіз матчів</value></data>
+	<data name="View and create match analyses to track performance." xml:space="preserve">
+    <value>Переглядайте та створюйте аналіз матчів для відстеження результативності.</value>
+  </data>
+	<data name="Analyze Matches" xml:space="preserve"><value>Аналізувати матчі</value></data>
+	<data name="Powered by ASP.NET Core MVC Designed for sports officials and tournament organizers" xml:space="preserve">
+    <value>Працює на ASP.NET Core MVC Розроблено для спортивних суддів та організаторів турнірів</value>
+  </data>
+</root>

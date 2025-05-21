@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Team" xml:space="preserve">
+    <value>Edit Team</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+	<data name="Change Photo (optional)" xml:space="preserve">
+    <value>Change Photo (optional)</value>
+  </data>
+	<data name="Current Photo" xml:space="preserve">
+    <value>Current Photo</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

@@ -1,0 +1,131 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Home Page"];
+}
+
+<style>
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #0d6efd;
+        text-shadow: 1px 1px 3px rgba(13, 110, 253, 0.3);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #6c757d;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .btn-outline-primary {
+        border-width: 2px;
+        transition: all 0.3s ease;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: white;
+            box-shadow: 0 0 12px rgba(13, 110, 253, 0.7);
+        }
+
+    .card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.25);
+        }
+
+    .card-title {
+        font-size: 1.5rem;
+        color: #0d6efd;
+    }
+
+    .card-text {
+        color: #495057;
+        font-size: 1rem;
+    }
+
+    .btn-sm.btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-sm.btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+            box-shadow: 0 4px 8px rgba(11, 94, 215, 0.5);
+        }
+
+    footer {
+        font-size: 0.9rem;
+        color: #adb5bd;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="hero-title">🏈 @Localizer["Referee Management System"]</h1>
+        <p class="hero-subtitle mb-4">
+            @Localizer["Manage tournaments, assign judges, and analyze matches efficiently."]
+        </p>
+        <a href="/Tournaments" class="btn btn-lg btn-outline-primary px-5 shadow-sm">
+            @Localizer["View Tournaments"]
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">📋 @Localizer["Manage Matches"]</h5>
+                    <p class="card-text flex-grow-1 mt-3">
+                        @Localizer["Create, edit, and view match results with detailed team info."]
+                    </p>
+                    <a href="/Matches2" class="btn btn-sm btn-primary mt-3 align-self-center px-4">
+                        @Localizer["Go to Matches"]
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">🧑‍⚖️ @Localizer["Judges"]</h5>
+                    <p class="card-text flex-grow-1 mt-3">
+                        @Localizer["View judges, their profiles, and manage information."]
+                    </p>
+                    <a href="/Judges" class="btn btn-sm btn-primary mt-3 align-self-center px-4">
+                        @Localizer["View Judges"]
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">📊 @Localizer["Match Analysis"]</h5>
+                    <p class="card-text flex-grow-1 mt-3">
+                        @Localizer["View and create match analyses to track performance."]
+                    </p>
+                    <a href="/MatchAnalysis" class="btn btn-sm btn-primary mt-3 align-self-center px-4">
+                        @Localizer["Analyze Matches"]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5 text-center">
+        <small>
+            @Localizer["Powered by ASP.NET Core MVC &middot; Designed for sports officials and tournament organizers"]
+        </small>
+    </footer>
+</div>

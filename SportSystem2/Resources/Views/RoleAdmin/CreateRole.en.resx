@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Role" xml:space="preserve">
+    <value>Create Role</value>
+  </data>
+	<data name="Create New Role" xml:space="preserve">
+    <value>Create New Role</value>
+  </data>
+	<data name="Role Name" xml:space="preserve">
+    <value>Role Name</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

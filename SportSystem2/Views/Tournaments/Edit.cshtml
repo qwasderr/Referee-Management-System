@@ -1,0 +1,41 @@
+﻿@model SportSystem2.Models.Tournament
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<h1 class="mb-4">@Localizer["Header"]</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <input type="hidden" asp-for="TournamentId" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label fw-semibold">@Localizer["Name"]</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Type" class="form-label fw-semibold">@Localizer["Type"]</label>
+            <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<TournamentType>()">
+                <option disabled selected>@Localizer["SelectType"]</option>
+            </select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">@Localizer["Save"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToList"]</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

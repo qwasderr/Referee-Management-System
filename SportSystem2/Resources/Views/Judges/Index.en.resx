@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Judges List" xml:space="preserve">
+    <value>Judges List</value>
+  </data>
+	<data name="Create New Judge" xml:space="preserve">
+    <value>Create New Judge</value>
+  </data>
+	<data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+	<data name="Full Name" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+	<data name="Qualification Level" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+	<data name="Last Attestation Date" xml:space="preserve">
+    <value>Last Attestation Date</value>
+  </data>
+	<data name="Not set" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+</root>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="CreateMatch" xml:space="preserve">
+    <value>Створити матч</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Турнір</value>
+  </data>
+	<data name="SelectTournamentPlaceholder" xml:space="preserve">
+    <value>-- Виберіть турнір --</value>
+  </data>
+	<data name="TournamentRound" xml:space="preserve">
+    <value>Раунд турніру</value>
+  </data>
+	<data name="SelectRoundPlaceholder" xml:space="preserve">
+    <value>-- Виберіть раунд --</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Дата матчу</value>
+  </data>
+	<data name="TeamA" xml:space="preserve">
+    <value>Команда A</value>
+  </data>
+	<data name="SelectTeamAPlaceholder" xml:space="preserve">
+    <value>-- Виберіть команду A --</value>
+  </data>
+	<data name="TeamB" xml:space="preserve">
+    <value>Команда B</value>
+  </data>
+	<data name="SelectTeamBPlaceholder" xml:space="preserve">
+    <value>-- Виберіть команду B --</value>
+  </data>
+	<data name="CreateButton" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

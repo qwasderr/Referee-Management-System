@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Home Page" xml:space="preserve"><value>Home Page</value></data>
+	<data name="Referee Management System" xml:space="preserve"><value>Referee Management System</value></data>
+	<data name="Manage tournaments, assign judges, and analyze matches efficiently." xml:space="preserve">
+    <value>Manage tournaments, assign judges, and analyze matches efficiently.</value>
+  </data>
+	<data name="View Tournaments" xml:space="preserve"><value>View Tournaments</value></data>
+	<data name="Manage Matches" xml:space="preserve"><value>Manage Matches</value></data>
+	<data name="Create, edit, and view match results with detailed team info." xml:space="preserve">
+    <value>Create, edit, and view match results with detailed team info.</value>
+  </data>
+	<data name="Go to Matches" xml:space="preserve"><value>Go to Matches</value></data>
+	<data name="Judges" xml:space="preserve"><value>Judges</value></data>
+	<data name="View judges, their profiles, and manage information." xml:space="preserve">
+    <value>View judges, their profiles, and manage information.</value>
+  </data>
+	<data name="View Judges" xml:space="preserve"><value>View Judges</value></data>
+	<data name="Match Analysis" xml:space="preserve"><value>Match Analysis</value></data>
+	<data name="View and create match analyses to track performance." xml:space="preserve">
+    <value>View and create match analyses to track performance.</value>
+  </data>
+	<data name="Analyze Matches" xml:space="preserve"><value>Analyze Matches</value></data>
+	<data name="Powered by ASP.NET Core MVC Designed for sports officials and tournament organizers" xml:space="preserve">
+    <value>Powered by ASP.NET Core MVC  Designed for sports officials and tournament organizers</value>
+  </data>
+</root>

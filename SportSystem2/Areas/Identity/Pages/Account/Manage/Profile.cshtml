@@ -1,0 +1,61 @@
+﻿@page
+@model SportSystem2.Areas.Identity.Pages.Account.Manage.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h2 class="mb-4">Profile Settings</h2>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-4">
+        <label asp-for="Input.FullName" class="form-label fw-semibold"></label>
+        <input asp-for="Input.FullName" class="form-control form-control-lg" placeholder="Enter your full name" required />
+        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label fw-semibold">Current Avatar</label>
+        <div>
+            @if (!string.IsNullOrEmpty(Model.AvatarUrl))
+            {
+                <img src="@Model.AvatarUrl" alt="Avatar" class="rounded-circle border" style="width:120px; height:120px; object-fit:cover;" />
+            }
+            else
+            {
+                <p class="text-muted fst-italic">No avatar uploaded.</p>
+            }
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label for="AvatarFile" class="form-label fw-semibold">Upload New Avatar</label>
+        <input type="file" class="form-control" id="AvatarFile" name="AvatarFile" accept="image/*" />
+        <small class="form-text text-muted">Supported formats: JPG, PNG, GIF. Max size 2MB.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg px-5">Save Changes</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}

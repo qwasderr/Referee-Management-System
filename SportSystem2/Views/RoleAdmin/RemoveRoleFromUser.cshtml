@@ -1,0 +1,53 @@
+﻿@model SportSystem2.Models.UserRoleViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<h2>@Localizer["Remove Role from User"]</h2>
+
+<form asp-action="RemoveRoleFromUser" method="post">
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label">@Localizer["Select User"]</label>
+        <select asp-for="UserName" class="form-select select2" asp-items="@(new SelectList(Model.Users))">
+            <option value="">@Localizer["-- Select a user --"]</option>
+        </select>
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SelectedRole" class="form-label">@Localizer["Select Role"]</label>
+        <select asp-for="SelectedRole" class="form-select select2" asp-items="@(new SelectList(Model.Roles))">
+            <option value="">@Localizer["-- Select a role --"]</option>
+        </select>
+        <span asp-validation-for="SelectedRole" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2 align-items-center">
+        <button type="submit" class="btn btn-danger">@Localizer["Remove Role"]</button>
+        <a asp-action="ListRoles" class="btn btn-secondary">@Localizer["Back to Roles List"]</a>
+    </div>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger mt-3">
+        <ul>
+            @foreach (var modelError in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@modelError.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "@Localizer["Select an option"]",
+                allowClear: true,
+                width: '100%'
+            });
+        });
+    </script>
+}

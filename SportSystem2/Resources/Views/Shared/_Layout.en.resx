@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="RMS" xml:space="preserve">
+    <value>RMS</value>
+  </data>
+	<data name="Toggle navigation" xml:space="preserve">
+    <value>Toggle navigation</value>
+  </data>
+	<data name="Tournaments" xml:space="preserve">
+    <value>Tournaments</value>
+  </data>
+	<data name="Matches" xml:space="preserve">
+    <value>Matches</value>
+  </data>
+	<data name="Teams" xml:space="preserve">
+    <value>Teams</value>
+  </data>
+	<data name="Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+	<data name="Judges" xml:space="preserve">
+    <value>Judges</value>
+  </data>
+	<data name="Tests" xml:space="preserve">
+    <value>Tests</value>
+  </data>
+	<data name="My Results" xml:space="preserve">
+    <value>My Results</value>
+  </data>
+	<data name="My Games" xml:space="preserve">
+    <value>My Games</value>
+  </data>
+	<data name="My Analyses" xml:space="preserve">
+    <value>My Analyses</value>
+  </data>
+	<data name="Manage Roles" xml:space="preserve">
+    <value>Manage Roles</value>
+  </data>
+	<data name="Test Results" xml:space="preserve">
+    <value>Test Results</value>
+  </data>
+	<data name="Match Analyses" xml:space="preserve">
+    <value>Match Analyses</value>
+  </data>
+	<data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+	<data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+	<data name="Ukrainian" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
+	<data name="Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+</root>

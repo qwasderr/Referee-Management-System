@@ -1,0 +1,65 @@
+﻿@model SportSystem2.Models.GameAssignment
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Game Assignment Details"];
+    var judgeMatches = ViewData["JudgeMatches"] as List<SportSystem2.Models.GameAssignment>;
+}
+
+<h1 class="mb-4">@Localizer["Game Assignment Details"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-primary mb-3">@Localizer["Assignment Information"]</h5>
+
+    <div class="row">
+        <div class="col-md-3 text-center">
+            @if (!string.IsNullOrEmpty(Model.Judge?.AvatarUrl))
+            {
+                <img src="@Model.Judge.AvatarUrl" class="rounded-circle shadow mb-2 object-fit-cover" style="width: 120px; height: 120px;" alt="@Localizer["Judge Photo"]" />
+            }
+            else
+            {
+                <div class="text-muted">@Localizer["No photo"]</div>
+            }
+            <div class="fw-semibold mt-2">@Model.Judge?.FullName</div>
+        </div>
+
+        <div class="col-md-9">
+            <dl class="row">
+                <dt class="col-sm-4 fw-semibold text-secondary">@Localizer["Match"]</dt>
+                <dd class="col-sm-8">@ViewData["MatchDescription"]</dd>
+
+                <dt class="col-sm-4 fw-semibold text-secondary">@Localizer["Role"]</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Role)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+@if (judgeMatches != null && judgeMatches.Any())
+{
+    <div class="card shadow-sm p-4 mb-4">
+        <h5 class="card-title text-primary mb-3">
+            @Localizer["Other Matches Judged by {0}", Model.Judge?.FullName]
+        </h5>
+        <ul class="list-group list-group-flush">
+            @foreach (var matchAssignment in judgeMatches)
+            {
+                if (matchAssignment.MatchId != Model.MatchId)
+                {
+                    <li class="list-group-item">
+                        <strong>@matchAssignment.Match.TeamA.Name</strong> vs <strong>@matchAssignment.Match.TeamB.Name</strong>
+                        <span class="text-muted ms-2">(@matchAssignment.Role)</span>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+}
+
+<div class="d-flex justify-content-between">
+    <a asp-action="Index"
+       asp-route-matchId="@ViewData["MatchId"]"
+       asp-route-tournamentRoundId="@ViewData["TournamentRoundId"]"
+       class="btn btn-outline-secondary">← @Localizer["Back to List"]</a>
+</div>

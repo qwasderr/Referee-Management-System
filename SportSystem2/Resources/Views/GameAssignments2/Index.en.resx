@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Game Assignments" xml:space="preserve">
+    <value>Game Assignments</value>
+  </data>
+	<data name="Create New Assignment" xml:space="preserve">
+    <value>Create New Assignment</value>
+  </data>
+	<data name="Back to Tournament Matches" xml:space="preserve">
+    <value>Back to Tournament Matches</value>
+  </data>
+	<data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+	<data name="Judge" xml:space="preserve">
+    <value>Judge</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Match</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+	<data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+	<data name="No photo" xml:space="preserve">
+    <value>No photo</value>
+  </data>
+	<data name="Not set" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+</root>

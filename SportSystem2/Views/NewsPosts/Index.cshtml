@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SportSystem2.Models.NewsPost>
+
+@using Microsoft.AspNetCore.Identity
+@using SportSystem2.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["News"];
+    var isAdmin = HttpContextAccessor.HttpContext.User.IsInRole("Admin");
+}
+
+<h1 class="mb-5 display-4 text-primary fw-bold">@Localizer["LatestNews"]</h1>
+
+@if (isAdmin)
+{
+    <div class="mb-5 text-end">
+        <a asp-action="Create" class="btn btn-lg btn-success shadow-sm">
+            <i class="bi bi-plus-lg me-2"></i> @Localizer["CreateNewPost"]
+        </a>
+    </div>
+}
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow border-0 rounded-4 overflow-hidden transition-shadow"
+                 style="cursor: pointer;"
+                 onmouseover="this.style.boxShadow='0 10px 25px rgba(0, 0, 0, 0.15)';"
+                 onmouseout="this.style.boxShadow='0 0 10px rgba(0, 0, 0, 0.05)';"
+                 onclick="location.href='@Url.Action("Details", new { id = item.NewsPostId })'">
+
+                @if (!string.IsNullOrEmpty(item.PhotoPath))
+                {
+                    <img src="@item.PhotoPath" alt="@Localizer["NewsImageAlt", item.Title]" class="card-img-top"
+                         style="height: 200px; object-fit: cover; transition: transform 0.3s ease;"
+                         onmouseover="this.style.transform='scale(1.05)';"
+                         onmouseout="this.style.transform='scale(1)';" />
+                }
+                else
+                {
+                    <div class="bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="bi bi-image fs-1 text-white-50"></i>
+                    </div>
+                }
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-truncate" title="@item.Title">@item.Title</h5>
+                    <p class="text-muted mb-2" style="font-size: 0.85rem;">
+                        <i class="bi bi-clock me-1"></i>@item.CreatedAt.ToString("MMM dd, yyyy HH:mm")
+                    </p>
+                    <p class="card-text flex-grow-1 text-truncate-3" title="@Html.Raw(item.Content)">
+                        @Html.Raw((item.Content.Length > 160) ? item.Content.Substring(0, 160) + "..." : item.Content)
+                    </p>
+
+                    <div class="mt-3 d-flex justify-content-between align-items-center">
+                        <a asp-action="Details" asp-route-id="@item.NewsPostId" class="btn btn-sm btn-outline-primary shadow-sm">
+                            <i class="bi bi-info-circle me-1"></i> @Localizer["Details"]
+                        </a>
+
+                        @if (isAdmin)
+                        {
+                            <div>
+                                <a asp-action="Edit" asp-route-id="@item.NewsPostId"
+                                   class="btn btn-sm btn-outline-warning shadow-sm me-2"
+                                   title="@Localizer["EditPost"]">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.NewsPostId"
+                                   class="btn btn-sm btn-outline-danger shadow-sm"
+                                   title="@Localizer["DeletePost"]"
+                                   onclick="return confirm('@Localizer["ConfirmDeleteMessage"]');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .text-truncate-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .transition-shadow {
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+</style>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Team Details" xml:space="preserve"><value>Деталі команди</value></data>
+	<data name="Team Logo" xml:space="preserve"><value>Логотип команди</value></data>
+	<data name="Team Information" xml:space="preserve"><value>Інформація про команду</value></data>
+	<data name="Name" xml:space="preserve"><value>Назва</value></data>
+	<data name="City" xml:space="preserve"><value>Місто</value></data>
+	<data name="Roster" xml:space="preserve"><value>Склад команди</value></data>
+	<data name="Photo" xml:space="preserve"><value>Фото</value></data>
+	<data name="Full Name" xml:space="preserve"><value>Повне ім'я</value></data>
+	<data name="Position" xml:space="preserve"><value>Позиція</value></data>
+	<data name="Birth Date" xml:space="preserve"><value>Дата народження</value></data>
+	<data name="Age" xml:space="preserve"><value>Вік</value></data>
+	<data name="Height (cm)" xml:space="preserve"><value>Зріст (см)</value></data>
+	<data name="Weight (kg)" xml:space="preserve"><value>Вага (кг)</value></data>
+	<data name="Gender" xml:space="preserve"><value>Стать</value></data>
+	<data name="Actions" xml:space="preserve"><value>Дії</value></data>
+	<data name="Edit" xml:space="preserve"><value>Редагувати</value></data>
+	<data name="Delete" xml:space="preserve"><value>Видалити</value></data>
+	<data name="Details" xml:space="preserve"><value>Деталі</value></data>
+	<data name="Photo of" xml:space="preserve"><value>Фото</value></data>
+	<data name="No players in this team yet." xml:space="preserve"><value>Ще немає гравців у цій команді.</value></data>
+	<data name="Recent Matches" xml:space="preserve"><value>Останні матчі</value></data>
+	<data name="Date" xml:space="preserve"><value>Дата</value></data>
+	<data name="Tournament" xml:space="preserve"><value>Турнір</value></data>
+	<data name="Opponent" xml:space="preserve"><value>Суперник</value></data>
+	<data name="Score" xml:space="preserve"><value>Рахунок</value></data>
+	<data name="Unknown" xml:space="preserve"><value>Невідомо</value></data>
+	<data name="No recent matches." xml:space="preserve"><value>Останніх матчів немає.</value></data>
+	<data name="Back to List" xml:space="preserve"><value>Повернутися до списку</value></data>
+</root>

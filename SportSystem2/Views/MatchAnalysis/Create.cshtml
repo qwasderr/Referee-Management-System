@@ -1,0 +1,85 @@
+﻿@model SportSystem2.Models.MatchAnalysis
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["CreateMatchAnalysis_Title"];
+    var matchIdStr = ViewData["MatchId"] as int?;
+    var judgeIdStr = ViewData["JudgeId"] as int?;
+}
+
+<h1 class="mb-4">@Localizer["CreateMatchAnalysis_Header"]</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        @if (matchIdStr != null)
+        {
+            <input type="hidden" asp-for="MatchId" value="@matchIdStr" />
+        }
+        else
+        {
+            <div class="mb-3">
+                <label asp-for="MatchId" class="form-label fw-semibold">@Localizer["Match_Label"]</label>
+                <select asp-for="MatchId" class="form-select" asp-items="@(ViewData["MatchesDescriptions"] as IEnumerable<SelectListItem>)">
+                    <option value="">-- @Localizer["SelectMatch_Prompt"] --</option>
+                </select>
+                <span asp-validation-for="MatchId" class="text-danger"></span>
+            </div>
+        }
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label fw-semibold">@Localizer["Title_Label"]</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Content" class="form-label fw-semibold">@Localizer["Content_Label"]</label>
+            <textarea asp-for="Content" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+        @if (judgeIdStr != null)
+        {
+            <input type="hidden" asp-for="CreatedByJudgeId" value="@judgeIdStr" />
+        }
+        else
+        {
+            <div class="mb-3">
+                <label asp-for="CreatedByJudgeId" class="form-label fw-semibold">@Localizer["CreatedByJudge_Label"]</label>
+                <select asp-for="CreatedByJudgeId" class="form-select" asp-items="ViewBag.CreatedByJudgeId">
+                    <option disabled selected>-- @Localizer["SelectJudge_Prompt"] --</option>
+                </select>
+                <span asp-validation-for="CreatedByJudgeId" class="text-danger"></span>
+            </div>
+        }
+
+        <div class="mb-3">
+            <label asp-for="AttachmentUrl" class="form-label fw-semibold">@Localizer["AttachmentUrl_Label"]</label>
+            <input asp-for="AttachmentUrl" class="form-control" />
+            <span asp-validation-for="AttachmentUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MinuteFrom" class="form-label fw-semibold">@Localizer["MinuteFrom_Label"]</label>
+            <input asp-for="MinuteFrom" type="time" step="1" class="form-control" />
+            <span asp-validation-for="MinuteFrom" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MinuteTo" class="form-label fw-semibold">@Localizer["MinuteTo_Label"]</label>
+            <input asp-for="MinuteTo" type="time" step="1" class="form-control" />
+            <span asp-validation-for="MinuteTo" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">@Localizer["Create_Button"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToList_Button"]</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

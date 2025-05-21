@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Match" xml:space="preserve">
+    <value>Редагувати матч</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Турнір</value>
+  </data>
+	<data name="-- Select Tournament --" xml:space="preserve">
+    <value>-- Виберіть турнір --</value>
+  </data>
+	<data name="Tournament Round" xml:space="preserve">
+    <value>Раунд турніру</value>
+  </data>
+	<data name="-- Select Round --" xml:space="preserve">
+    <value>-- Виберіть раунд --</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+	<data name="Team A" xml:space="preserve">
+    <value>Команда A</value>
+  </data>
+	<data name="Team B" xml:space="preserve">
+    <value>Команда B</value>
+  </data>
+	<data name="Match Results" xml:space="preserve">
+    <value>Результати матчу</value>
+  </data>
+	<data name="Score" xml:space="preserve">
+    <value>Рахунок</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутись до списку</value>
+  </data>
+</root>

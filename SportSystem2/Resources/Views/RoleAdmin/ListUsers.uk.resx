@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Users List" xml:space="preserve">
+    <value>Список користувачів</value>
+  </data>
+	<data name="UserName" xml:space="preserve">
+    <value>Ім'я користувача</value>
+  </data>
+	<data name="Email" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
+	<data name="Add Role to User" xml:space="preserve">
+    <value>Додати роль користувачу</value>
+  </data>
+	<data name="Back to Roles List" xml:space="preserve">
+    <value>Повернутися до списку ролей</value>
+  </data>
+</root>

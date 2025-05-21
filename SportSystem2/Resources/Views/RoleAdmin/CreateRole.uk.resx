@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Role" xml:space="preserve">
+    <value>Створити роль</value>
+  </data>
+	<data name="Create New Role" xml:space="preserve">
+    <value>Створення нової ролі</value>
+  </data>
+	<data name="Role Name" xml:space="preserve">
+    <value>Назва ролі</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

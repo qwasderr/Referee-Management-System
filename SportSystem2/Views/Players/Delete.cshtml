@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model SportSystem2.Models.Player
+
+@{
+    ViewData["Title"] = Localizer["Delete Player"];
+}
+
+<h1 class="mb-4 text-danger">@Localizer["Delete Player"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-warning mb-3">@Localizer["Are you sure you want to delete this player?"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Team"]</dt>
+        <dd class="col-sm-9">@Model.Team?.City</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Full Name"]</dt>
+        <dd class="col-sm-9">@Model.FullName</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Position"]</dt>
+        <dd class="col-sm-9">@Model.Position</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Number"]</dt>
+        <dd class="col-sm-9">@Model.Number</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Birth Date"]</dt>
+        <dd class="col-sm-9">@Model.BirthDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Age"]</dt>
+        <dd class="col-sm-9">@Model.Age</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Height"]</dt>
+        <dd class="col-sm-9">@Model.Height</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Weight"]</dt>
+        <dd class="col-sm-9">@Model.Weight</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Gender"]</dt>
+        <dd class="col-sm-9">@Model.Gender</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="PlayerId" />
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
+            <a asp-controller="Teams" asp-action="Details" asp-route-id="@Model.TeamId" class="btn btn-outline-secondary">@Localizer["Back to Team"]</a>
+        </div>
+    </form>
+</div>

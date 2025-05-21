@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Player Event" xml:space="preserve">
+    <value>Створити подію гравця</value>
+  </data>
+	<data name="Player" xml:space="preserve">
+    <value>Гравець</value>
+  </data>
+	<data name="Select player" xml:space="preserve">
+    <value>Оберіть гравця</value>
+  </data>
+	<data name="Event Type" xml:space="preserve">
+    <value>Тип події</value>
+  </data>
+	<data name="Select event type" xml:space="preserve">
+    <value>Оберіть тип події</value>
+  </data>
+	<data name="Yards" xml:space="preserve">
+    <value>Ярди</value>
+  </data>
+	<data name="Points" xml:space="preserve">
+    <value>Очки</value>
+  </data>
+	<data name="Minute" xml:space="preserve">
+    <value>Хвилина</value>
+  </data>
+	<data name="Period Number" xml:space="preserve">
+    <value>Номер періоду</value>
+  </data>
+	<data name="Period Type" xml:space="preserve">
+    <value>Тип періоду</value>
+  </data>
+	<data name="Select Period Type" xml:space="preserve">
+    <value>Оберіть тип періоду</value>
+  </data>
+	<data name="Notes" xml:space="preserve">
+    <value>Примітки</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+</root>

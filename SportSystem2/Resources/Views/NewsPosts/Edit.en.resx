@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit News Post" xml:space="preserve">
+    <value>Edit News Post</value>
+  </data>
+	<data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+	<data name="Edit news title here..." xml:space="preserve">
+    <value>Edit news title here...</value>
+  </data>
+	<data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+	<data name="Edit the news content here..." xml:space="preserve">
+    <value>Edit the news content here...</value>
+  </data>
+	<data name="Upload Photo (optional)" xml:space="preserve">
+    <value>Upload Photo (optional)</value>
+  </data>
+	<data name="Allowed formats: JPG, PNG, GIF. Max size: 2MB." xml:space="preserve">
+    <value>Allowed formats: JPG, PNG, GIF. Max size: 2MB.</value>
+  </data>
+	<data name="Current Photo" xml:space="preserve">
+    <value>Current Photo</value>
+  </data>
+	<data name="Photo Preview" xml:space="preserve">
+    <value>Photo Preview</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+	<data name="Please select a valid image file." xml:space="preserve">
+    <value>Please select a valid image file.</value>
+  </data>
+	<data name="File size exceeds 2MB limit." xml:space="preserve">
+    <value>File size exceeds 2MB limit.</value>
+  </data>
+</root>

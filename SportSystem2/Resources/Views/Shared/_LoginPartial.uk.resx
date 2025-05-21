@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Hello" xml:space="preserve">
+    <value>Привіт</value>
+  </data>
+	<data name="Manage" xml:space="preserve">
+    <value>Керування</value>
+  </data>
+	<data name="Logout" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+	<data name="Register" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
+	<data name="Login" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
+</root>

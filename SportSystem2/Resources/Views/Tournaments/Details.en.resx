@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Tournament Details" xml:space="preserve">
+    <value>Tournament Details</value>
+  </data>
+	<data name="Tournament Information" xml:space="preserve">
+    <value>Tournament Information</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="Standings" xml:space="preserve">
+    <value>Standings</value>
+  </data>
+	<data name="Pos" xml:space="preserve">
+    <value>Pos</value>
+  </data>
+	<data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+	<data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+	<data name="Wins" xml:space="preserve">
+    <value>Wins</value>
+  </data>
+	<data name="Draws" xml:space="preserve">
+    <value>Draws</value>
+  </data>
+	<data name="Losses" xml:space="preserve">
+    <value>Losses</value>
+  </data>
+	<data name="Points" xml:space="preserve">
+    <value>Points</value>
+  </data>
+	<data name="Scored" xml:space="preserve">
+    <value>Scored</value>
+  </data>
+	<data name="Conceded" xml:space="preserve">
+    <value>Conceded</value>
+  </data>
+	<data name="Diff" xml:space="preserve">
+    <value>Diff</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+	<data name="Team Logo" xml:space="preserve">
+    <value>Team Logo</value>
+  </data>
+</root>

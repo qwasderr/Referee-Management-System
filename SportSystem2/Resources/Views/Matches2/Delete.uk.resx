@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="DeleteMatch" xml:space="preserve">
+    <value>Видалити матч</value>
+  </data>
+	<data name="ConfirmDeleteMessage" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити цей матч?</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Дата матчу</value>
+  </data>
+	<data name="TeamA" xml:space="preserve">
+    <value>Команда A</value>
+  </data>
+	<data name="TeamB" xml:space="preserve">
+    <value>Команда B</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Турнір</value>
+  </data>
+	<data name="TournamentRound" xml:space="preserve">
+    <value>Раунд турніру</value>
+  </data>
+	<data name="DeleteButton" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

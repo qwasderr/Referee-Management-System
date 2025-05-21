@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="CreateMatchAnalysis_Title" xml:space="preserve">
+    <value>Створити аналіз матчу</value>
+  </data>
+	<data name="CreateMatchAnalysis_Header" xml:space="preserve">
+    <value>Створити аналіз матчу</value>
+  </data>
+	<data name="Match_Label" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="SelectMatch_Prompt" xml:space="preserve">
+    <value>Виберіть матч</value>
+  </data>
+	<data name="Title_Label" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="Content_Label" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+	<data name="CreatedByJudge_Label" xml:space="preserve">
+    <value>Суддя, який створив</value>
+  </data>
+	<data name="SelectJudge_Prompt" xml:space="preserve">
+    <value>Виберіть суддю</value>
+  </data>
+	<data name="AttachmentUrl_Label" xml:space="preserve">
+    <value>Посилання на додаток</value>
+  </data>
+	<data name="MinuteFrom_Label" xml:space="preserve">
+    <value>Хвилина початку</value>
+  </data>
+	<data name="MinuteTo_Label" xml:space="preserve">
+    <value>Хвилина закінчення</value>
+  </data>
+	<data name="Create_Button" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="BackToList_Button" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

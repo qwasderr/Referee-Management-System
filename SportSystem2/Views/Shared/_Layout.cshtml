@@ -1,0 +1,207 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html lang="@System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - RMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/sandstone/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportSystem2.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+            .nav-link:hover, .nav-link:focus {
+                color: #d2691e;
+            }
+
+        main {
+            min-height: 80vh;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        footer.footer {
+            background-color: #343a40;
+            color: #ddd;
+            padding: 15px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+            footer.footer a {
+                color: #ffc107;
+                text-decoration: none;
+            }
+
+                footer.footer a:hover {
+                    text-decoration: underline;
+                }
+
+        #notCheckedCountBadge {
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        .navbar-nav.flex-nowrap {
+            white-space: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .navbar-nav.flex-nowrap > li {
+                flex: 0 0 auto;
+            }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container d-flex flex-nowrap">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["RMS"]</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                        aria-controls="navbarMain" aria-expanded="false" aria-label="@Localizer["Toggle navigation"]">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-nowrap">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Tournaments" asp-action="Index">@Localizer["Tournaments"]</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Matches2" asp-action="Index">@Localizer["Matches"]</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Teams" asp-action="Index">@Localizer["Teams"]</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Players2" asp-action="Index">@Localizer["Players"]</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Judges" asp-action="Index">@Localizer["Judges"]</a></li>
+
+                        @if (User.IsInRole("Judge"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Tests" asp-action="Index">@Localizer["Tests"]</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="TestResultsView" asp-action="Index">@Localizer["My Results"]</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="GameAssignments" asp-action="Index">@Localizer["My Games"]</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="MatchAnalysis" asp-action="MyAnalyses">@Localizer["My Analyses"]</a></li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="RoleAdmin" asp-action="ListRoles">@Localizer["Manage Roles"]</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Tests" asp-action="Index">@Localizer["Tests"]</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" asp-controller="TestResults" asp-action="Index" id="testResultsLink">
+                                    @Localizer["Test Results"]
+                                    <span id="notCheckedCountBadge" class="badge bg-danger ms-2" style="display:none">0</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item"><a class="nav-link" asp-controller="MatchAnalysis" asp-action="Index">@Localizer["Match Analyses"]</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="NewsPosts" asp-action="Index">@Localizer["News"]</a></li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @{
+                                    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+                                    string langDisplay = currentCulture switch
+                                    {
+                                        "uk" => "Українська 🇺🇦",
+                                        "en" => "English 🇺🇸",
+                                        _ => currentCulture
+                                    };
+                                }
+                                @langDisplay
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Culture" asp-action="SetCulture" asp-route-culture="en-US" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">
+                                        English 🇺🇸
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Culture" asp-action="SetCulture" asp-route-culture="uk-UA" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">
+                                        Українська 🇺🇦
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 - SportSystem2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Privacy"]</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        function updateNotCheckedCount() {
+            fetch('/TestResults/GetNotCheckedTestsCount')
+                .then(response => response.json())
+                .then(data => {
+                    const badge = document.getElementById('notCheckedCountBadge');
+                    if (data.notCheckedCount > 0) {
+                        badge.textContent = data.notCheckedCount;
+                        badge.style.display = 'inline-block';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching not checked count:', error);
+                });
+        }
+
+        updateNotCheckedCount();
+        setInterval(updateNotCheckedCount, 30000);
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

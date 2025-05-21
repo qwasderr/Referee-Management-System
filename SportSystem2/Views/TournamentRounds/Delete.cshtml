@@ -1,0 +1,46 @@
+﻿@model SportSystem2.Models.TournamentRound
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+    var tournamentId = ViewData["TournamentId"] as int?;
+}
+
+<h1 class="mb-4 text-danger">@Localizer["Header"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-warning mb-3">@Localizer["ConfirmDelete"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Tournament"]</dt>
+        <dd class="col-sm-9">@Model.Tournament?.Name</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["RoundName"]</dt>
+        <dd class="col-sm-9">@Model.RoundName</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Location"]</dt>
+        <dd class="col-sm-9">@Model.Location</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["StartDateTime"]</dt>
+        <dd class="col-sm-9">@Model.StartDate?.ToString("yyyy-MM-dd HH:mm")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["EndDateTime"]</dt>
+        <dd class="col-sm-9">@Model.EndDate?.ToString("yyyy-MM-dd HH:mm")</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RoundId" />
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
+
+            @if (tournamentId.HasValue)
+            {
+                <a asp-action="Index" asp-route-tournamentId="@tournamentId" class="btn btn-outline-secondary">@Localizer["BackToRounds"]</a>
+            }
+            else
+            {
+                <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToAllRounds"]</a>
+            }
+        </div>
+    </form>
+</div>

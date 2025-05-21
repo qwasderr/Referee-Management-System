@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SportSystem2.Models.PlayerEvent>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Player Events"];
+}
+
+<h1 class="mb-4">@Localizer["Player Events"]</h1>
+
+<div class="mb-3"></div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <a asp-action="Create" asp-route-matchid="@ViewData["MatchId"]" asp-route-tournamentRoundId="@ViewData["TournamentRoundId"]" class="btn btn-primary">
+        + @Localizer["Create New Player Event"]
+    </a>
+
+    <a asp-controller="Matches"
+       asp-action="Index"
+       asp-route-tournamentRoundId=@ViewData["TournamentRoundId"]
+       class="btn btn-outline-secondary">
+        ← @Localizer["Back to Matches"]
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Player"]</th>
+                    <th>@Localizer["Match"]</th>
+                    <th>@Localizer["Event Type"]</th>
+                    <th>@Localizer["Yards"]</th>
+                    <th>@Localizer["Points"]</th>
+                    <th>@Localizer["Minute"]</th>
+                    <th>@Localizer["Period Number"]</th>
+                    <th>@Localizer["Period Type"]</th>
+                    <th>@Localizer["Notes"]</th>
+                    <th style="width: 300px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.Player != null ? $"{item.Player.FullName} #{item.Player.Number}" : "-")</td>
+                        <td>@item.Match?.MatchId</td>
+                        <td>@item.EventType.ToString()</td>
+                        <td>@item.Yards</td>
+                        <td>@item.Points</td>
+                        <td>@item.Minute</td>
+                        <td>@item.PeriodNumber</td>
+                        <td>@item.PeriodType.ToString()</td>
+                        <td>@item.Notes</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.PlayerEventId" asp-route-matchid="@item.MatchId" asp-route-tournamentRoundId="@ViewData["TournamentRoundId"]" class="btn btn-sm btn-outline-primary me-1">
+                                @Localizer["Edit"]
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.PlayerEventId" asp-route-matchid="@item.MatchId" asp-route-tournamentRoundId="@ViewData["TournamentRoundId"]" class="btn btn-sm btn-outline-info me-1">
+                                @Localizer["Details"]
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.PlayerEventId" asp-route-matchid="@item.MatchId" asp-route-tournamentRoundId="@ViewData["TournamentRoundId"]" class="btn btn-sm btn-outline-danger me-1">
+                                @Localizer["Delete"]
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

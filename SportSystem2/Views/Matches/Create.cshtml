@@ -1,0 +1,51 @@
+﻿@model SportSystem2.Models.Match
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Create Match"];
+}
+
+<h1 class="mb-4">@Localizer["Create Match"]</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label fw-semibold">@Localizer["Match Date"]</label>
+            <input asp-for="Date" class="form-control" type="datetime-local" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TeamAId" class="form-label fw-semibold">@Localizer["Team A"]</label>
+            <select asp-for="TeamAId" class="form-select" asp-items="ViewBag.TeamAId">
+                <option disabled selected>-- @Localizer["Select Team A"] --</option>
+            </select>
+            <span asp-validation-for="TeamAId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TeamBId" class="form-label fw-semibold">@Localizer["Team B"]</label>
+            <select asp-for="TeamBId" class="form-select" asp-items="ViewBag.TeamBId">
+                <option disabled selected>-- @Localizer["Select Team B"] --</option>
+            </select>
+            <span asp-validation-for="TeamBId" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" name="TournamentId" value="@ViewData["CurrentTournamentId"]" />
+        <input type="hidden" name="TournamentRoundId" value="@ViewData["CurrentTournamentRoundId"]" />
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">@Localizer["Create"]</button>
+            <a asp-action="Index" asp-route-tournamentRoundId="@ViewData["CurrentTournamentRoundId"]" class="btn btn-outline-secondary">@Localizer["Back to List"]</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

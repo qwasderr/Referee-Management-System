@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Players" xml:space="preserve">
+    <value>Гравці</value>
+  </data>
+	<data name="Create New Player" xml:space="preserve">
+    <value>Створити нового гравця</value>
+  </data>
+	<data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+	<data name="Team" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+	<data name="Full Name" xml:space="preserve">
+    <value>Повне ім'я</value>
+  </data>
+	<data name="Position" xml:space="preserve">
+    <value>Позиція</value>
+  </data>
+	<data name="Number" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+	<data name="Birth Date" xml:space="preserve">
+    <value>Дата народження</value>
+  </data>
+	<data name="Age" xml:space="preserve">
+    <value>Вік</value>
+  </data>
+	<data name="Height (cm)" xml:space="preserve">
+    <value>Зріст (см)</value>
+  </data>
+	<data name="Weight (kg)" xml:space="preserve">
+    <value>Вага (кг)</value>
+  </data>
+	<data name="Gender" xml:space="preserve">
+    <value>Стать</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+	<data name="No players found." xml:space="preserve">
+    <value>Гравців не знайдено.</value>
+  </data>
+	<data name="Photo of {0}" xml:space="preserve">
+    <value>Фото {0}</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+</root>

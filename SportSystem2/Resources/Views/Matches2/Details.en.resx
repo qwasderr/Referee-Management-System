@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Match Details" xml:space="preserve">
+    <value>Match Details</value>
+  </data>
+	<data name="Match Location and Time" xml:space="preserve">
+    <value>Match Location and Time</value>
+  </data>
+	<data name="Date and Time" xml:space="preserve">
+    <value>Date and Time</value>
+  </data>
+	<data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+	<data name="N/A" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+	<data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+	<data name="Final Score" xml:space="preserve">
+    <value>Final Score</value>
+  </data>
+	<data name="Match Information" xml:space="preserve">
+    <value>Match Information</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="Tournament Round" xml:space="preserve">
+    <value>Tournament Round</value>
+  </data>
+	<data name="Player Events by Period" xml:space="preserve">
+    <value>Player Events by Period</value>
+  </data>
+	<data name="No events" xml:space="preserve">
+    <value>No events</value>
+  </data>
+	<data name="Assigned Judges" xml:space="preserve">
+    <value>Assigned Judges</value>
+  </data>
+	<data name="Judge Name" xml:space="preserve">
+    <value>Judge Name</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+	<data name="No judges assigned to this match." xml:space="preserve">
+    <value>No judges assigned to this match.</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+
+	<data name="Regular" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+	<data name="Overtime" xml:space="preserve">
+    <value>Overtime</value>
+  </data>
+	<data name="Penalty Shootout" xml:space="preserve">
+    <value>Penalty Shootout</value>
+  </data>
+</root>

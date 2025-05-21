@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Team" xml:space="preserve">
+    <value>Редагувати команду</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="City" xml:space="preserve">
+    <value>Місто</value>
+  </data>
+	<data name="Change Photo (optional)" xml:space="preserve">
+    <value>Змінити фото (необов’язково)</value>
+  </data>
+	<data name="Current Photo" xml:space="preserve">
+    <value>Поточне фото</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>

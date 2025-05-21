@@ -1,0 +1,68 @@
+﻿@model SportSystem2.Models.Match
+
+@{
+    ViewData["Title"] = "Edit Match";
+
+    int tournamentId = (int)(ViewData["CurrentTournamentId"] ?? 0);
+    int tournamentRoundId = (int)(ViewData["CurrentTournamentRoundId"] ?? 0);
+
+    var resultA = Model.MatchResults.FirstOrDefault(r => r.TeamId == Model.TeamAId);
+    var resultB = Model.MatchResults.FirstOrDefault(r => r.TeamId == Model.TeamBId);
+}
+
+<h1 class="mb-4">Edit Match</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <input type="hidden" asp-for="MatchId" />
+        <input type="hidden" name="TournamentId" value="@tournamentId" />
+        <input type="hidden" name="TournamentRoundId" value="@tournamentRoundId" />
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label fw-semibold"></label>
+            <input asp-for="Date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TeamAId" class="form-label fw-semibold"></label>
+            <select asp-for="TeamAId" class="form-select" asp-items="ViewBag.TeamAId"></select>
+            <span asp-validation-for="TeamAId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TeamBId" class="form-label fw-semibold"></label>
+            <select asp-for="TeamBId" class="form-select" asp-items="ViewBag.TeamBId"></select>
+            <span asp-validation-for="TeamBId" class="text-danger"></span>
+        </div>
+
+        <hr />
+        <h5 class="mb-3">Match Results</h5>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">@Model.TeamA?.Name Score</label>
+            <input type="number" name="ScoreA" class="form-control" value="@resultA?.Points" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">@Model.TeamB?.Name Score</label>
+            <input type="number" name="ScoreB" class="form-control" value="@resultB?.Points" required />
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a asp-action="Index"
+               asp-route-tournamentId="@tournamentId"
+               asp-route-tournamentRoundId="@tournamentRoundId"
+               class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

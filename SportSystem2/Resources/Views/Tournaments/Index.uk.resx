@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+	</resheader>
+
+	<data name="Tournaments" xml:space="preserve">
+    <value>Турніри</value>
+  </data>
+	<data name="Create New Tournament" xml:space="preserve">
+    <value>Створити новий турнір</value>
+  </data>
+	<data name="Name" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+	<data name="Rounds" xml:space="preserve">
+    <value>Раунди</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+</root>

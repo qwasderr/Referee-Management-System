@@ -1,0 +1,150 @@
+﻿@model SportSystem2.Models.MatchAnalysis
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.WebUtilities
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["MatchAnalysisDetails"];
+    var matches = ViewData["MatchesDescriptions"] as IEnumerable<SelectListItem>;
+    var selectedText = matches?.FirstOrDefault(m => m.Value == Model.MatchId.ToString())?.Text;
+    string videoId = "";
+    bool isYouTube = false;
+    if (!string.IsNullOrEmpty(Model.AttachmentUrl) && (Model.AttachmentUrl.Contains("youtube.com") || Model.AttachmentUrl.Contains("youtu.be")))
+    {
+        isYouTube = true;
+        try
+        {
+            var uri = new Uri(Model.AttachmentUrl);
+            if (uri.Host.Contains("youtube.com"))
+            {
+                var query = QueryHelpers.ParseQuery(uri.Query);
+                if (query.ContainsKey("v"))
+                {
+                    videoId = query["v"];
+                }
+            }
+            else if (uri.Host.Contains("youtu.be"))
+            {
+                videoId = uri.AbsolutePath.Trim('/');
+            }
+        }
+        catch
+        {
+            videoId = "";
+            isYouTube = false;
+        }
+    }
+}
+
+<h1 class="mb-4">@Localizer["MatchAnalysisDetails"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-primary mb-3">@Localizer["AnalysisInformation"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Match"]</dt>
+        <dd class="col-sm-9">@selectedText</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Title"]</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Content"]</dt>
+        <dd class="col-sm-9">@Model.Content</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["CreatedAt"]</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToString("g")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["LastEditedAt"]</dt>
+        <dd class="col-sm-9">@Model.LastEditedAt?.ToString("g")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["CreatedByJudge"]</dt>
+        <dd class="col-sm-9">@Model.CreatedByJudge?.FullName</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["AttachmentUrl"]</dt>
+        <dd class="col-sm-9">@Model.AttachmentUrl</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["MinuteFromTo"]</dt>
+        <dd class="col-sm-9">
+            <p class="mb-2">
+                <strong>@Localizer["From"]:</strong>
+                @if (Model.MinuteFrom.HasValue && !string.IsNullOrEmpty(Model.AttachmentUrl) && isYouTube)
+                {
+                    <a href="javascript:void(0);" onclick="seekTo(@((int)Model.MinuteFrom.Value.TotalSeconds))">
+                        @Model.MinuteFrom.Value.ToString(@"hh\:mm\:ss")
+                    </a>
+                }
+                else
+                {
+                    @Model.MinuteFrom?.ToString(@"hh\:mm\:ss")
+                }
+                &nbsp;|&nbsp;
+                <strong>@Localizer["To"]:</strong>
+                @if (Model.MinuteTo.HasValue && !string.IsNullOrEmpty(Model.AttachmentUrl) && isYouTube)
+                {
+                    <a href="javascript:void(0);" onclick="seekTo(@((int)Model.MinuteTo.Value.TotalSeconds))">
+                        @Model.MinuteTo.Value.ToString(@"hh\:mm\:ss")
+                    </a>
+                }
+                else
+                {
+                    @Model.MinuteTo?.ToString(@"hh\:mm\:ss")
+                }
+            </p>
+        </dd>
+    </dl>
+</div>
+
+@if (isYouTube)
+{
+    <div class="card shadow-sm p-4 mb-4">
+        <h5 class="card-title text-primary mb-3">@Localizer["VideoAnalysis"]</h5>
+        <div id="youtube-player" class="ratio ratio-16x9">
+            <div id="player"></div>
+        </div>
+    </div>
+}
+
+<div class="d-flex justify-content-between">
+    <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToList"]</a>
+</div>
+
+@section Scripts {
+    <script>
+        var videoId = '@videoId';
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: videoId,
+                playerVars: { autoplay: 0, controls: 1 },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onError': function (e) { console.error('Player error:', e); }
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+        }
+
+        function seekTo(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);
+                player.playVideo();
+            }
+        }
+
+        (function loadYouTubeAPI() {
+            if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            } else {
+                onYouTubeIframeAPIReady();
+            }
+        })();
+    </script>
+}

@@ -1,0 +1,110 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<SportSystem2.Models.Match>
+
+@{
+    ViewData["Title"] = Localizer["Matches"];
+    int tournamentId = (int)(ViewData["TournamentId"] ?? 0);
+    int tournamentRoundId = (int)(ViewData["TournamentRoundId"] ?? 0);
+}
+
+<h1 class="mb-4">@Localizer["Matches"]</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create"
+           asp-route-tournamentId="@tournamentId"
+           asp-route-tournamentRoundId="@tournamentRoundId"
+           class="btn btn-primary">+ @Localizer["Create New Match"]</a>
+    }
+
+    <a asp-controller="TournamentRounds"
+       asp-action="Index"
+       asp-route-tournamentId="@tournamentId"
+       class="btn btn-outline-secondary">← @Localizer["Back to Tournament Rounds"]</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Date"]</th>
+                    <th>@Localizer["Home Team City"]</th>
+                    <th>@Localizer["Home Team Name"]</th>
+                    <th style="white-space: nowrap;">@Localizer["Score"]</th>
+                    <th>@Localizer["Away Team Name"]</th>
+                    <th>@Localizer["Away Team City"]</th>
+                    <th>@Localizer["Tournament"]</th>
+                    <th>@Localizer["Tournament Round"]</th>
+                    <th>@Localizer["Location"]</th>
+                    <th style="width: 350px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var scoreA = item.MatchResults.FirstOrDefault(r => r.TeamId == item.TeamAId)?.Points ?? 0;
+                    var scoreB = item.MatchResults.FirstOrDefault(r => r.TeamId == item.TeamBId)?.Points ?? 0;
+
+                    <tr>
+                        <td>@item.Date.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@item.TeamA?.City</td>
+                        <td>@item.TeamA?.Name</td>
+                        <td style="white-space: nowrap;"><strong>@scoreA</strong> : <strong>@scoreB</strong></td>
+                        <td>@item.TeamB?.Name</td>
+                        <td>@item.TeamB?.City</td>
+                        <td>@item.Tournament?.Name</td>
+                        <td>@item.TournamentRound?.RoundName</td>
+                        <td>@item.TournamentRound?.Location</td>
+                        <td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.MatchId"
+                                   asp-route-tournamentId="@tournamentId"
+                                   asp-route-tournamentRoundId="@tournamentRoundId"
+                                   class="btn btn-sm btn-outline-primary me-1">@Localizer["Edit"]</a>
+                            }
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.MatchId"
+                               asp-route-tournamentId="@tournamentId"
+                               asp-route-tournamentRoundId="@tournamentRoundId"
+                               class="btn btn-sm btn-outline-info me-1">@Localizer["Details"]</a>
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.MatchId"
+                                   asp-route-tournamentId="@tournamentId"
+                                   asp-route-tournamentRoundId="@tournamentRoundId"
+                                   class="btn btn-sm btn-outline-danger me-1">@Localizer["Delete"]</a>
+
+                                <a asp-controller="PlayerEvents"
+                                   asp-action="Index"
+                                   asp-route-matchId="@item.MatchId"
+                                   asp-route-tournamentRoundId="@tournamentRoundId"
+                                   class="btn btn-sm btn-outline-warning me-1">@Localizer["Show Events"]</a>
+                            }
+                            @if (User.IsInRole("Judge"))
+                            {
+                                <a asp-controller="MatchAnalysis"
+                                   asp-action="Create"
+                                   asp-route-matchId="@item.MatchId"
+                                   class="btn btn-sm btn-outline-dark me-1">@Localizer["Create Analysis"]</a>
+                            }
+                            <a asp-controller="GameAssignments2"
+                               asp-action="Index"
+                               asp-route-matchId="@item.MatchId"
+                               asp-route-tournamentRoundId="@tournamentRoundId"
+                               class="btn btn-sm btn-outline-success">@Localizer["Show Judges"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

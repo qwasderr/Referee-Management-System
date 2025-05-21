@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SportSystem2.Models.Tournament>
+
+@using Microsoft.AspNetCore.Identity
+@using SportSystem2.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Tournaments"];
+    var isAdmin = HttpContextAccessor.HttpContext.User.IsInRole("Admin");
+}
+
+<h1 class="mb-4">@Localizer["Tournaments"]</h1>
+
+@if (isAdmin)
+{
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">+ @Localizer["Create New Tournament"]</a>
+    </div>
+}
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Name"]</th>
+                    <th>@Localizer["Type"]</th>
+                    <th style="width:@(isAdmin ? "260px" : "150px");">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Type</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.TournamentId" class="btn btn-sm btn-outline-info me-1">@Localizer["Details"]</a>
+                            <a asp-controller="TournamentRounds" asp-action="Index" asp-route-tournamentId="@item.TournamentId" class="btn btn-sm btn-outline-secondary me-1">@Localizer["Rounds"]</a>
+
+                            @if (isAdmin)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.TournamentId" class="btn btn-sm btn-outline-primary me-1">@Localizer["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.TournamentId" class="btn btn-sm btn-outline-danger">@Localizer["Delete"]</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

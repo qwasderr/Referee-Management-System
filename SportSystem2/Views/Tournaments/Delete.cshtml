@@ -1,0 +1,29 @@
+﻿@model SportSystem2.Models.Tournament
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Delete Tournament"];
+}
+
+<h1 class="mb-4 text-danger">@Localizer["Delete Tournament"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-warning mb-3">@Localizer["Are you sure you want to delete this tournament?"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Tournament Name"]</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Type"]</dt>
+        <dd class="col-sm-9">@Model.Type</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TournamentId" />
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Back to List"]</a>
+        </div>
+    </form>
+</div>

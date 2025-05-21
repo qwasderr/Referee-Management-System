@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Matches" xml:space="preserve">
+    <value>Matches</value>
+  </data>
+	<data name="Create New Match" xml:space="preserve">
+    <value>Create New Match</value>
+  </data>
+	<data name="Back to Tournament Rounds" xml:space="preserve">
+    <value>Back to Tournament Rounds</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+	<data name="Home Team City" xml:space="preserve">
+    <value>Home Team City</value>
+  </data>
+	<data name="Home Team Name" xml:space="preserve">
+    <value>Home Team Name</value>
+  </data>
+	<data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+	<data name="Away Team Name" xml:space="preserve">
+    <value>Away Team Name</value>
+  </data>
+	<data name="Away Team City" xml:space="preserve">
+    <value>Away Team City</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="Tournament Round" xml:space="preserve">
+    <value>Tournament Round</value>
+  </data>
+	<data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Show Events" xml:space="preserve">
+    <value>Show Events</value>
+  </data>
+	<data name="Create Analysis" xml:space="preserve">
+    <value>Create Analysis</value>
+  </data>
+	<data name="Show Judges" xml:space="preserve">
+    <value>Show Judges</value>
+  </data>
+</root>

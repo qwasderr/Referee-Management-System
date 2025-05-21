@@ -1,0 +1,25 @@
+﻿@model List<SportSystem2.Models.ApplicationUser>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<h2>@Localizer["Users List"]</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["UserName"]</th>
+            <th>@Localizer["Email"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="AddRoleToUser" class="btn btn-primary">@Localizer["Add Role to User"]</a>
+<a asp-action="ListRoles" class="btn btn-secondary">@Localizer["Back to Roles List"]</a>

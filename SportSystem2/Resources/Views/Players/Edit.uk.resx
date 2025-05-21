@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Player" xml:space="preserve">
+    <value>Редагувати гравця</value>
+  </data>
+	<data name="Team" xml:space="preserve">
+    <value>Команда</value>
+  </data>
+	<data name="Full Name" xml:space="preserve">
+    <value>Повне ім'я</value>
+  </data>
+	<data name="Position" xml:space="preserve">
+    <value>Позиція</value>
+  </data>
+	<data name="Number" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+	<data name="Birth Date" xml:space="preserve">
+    <value>Дата народження</value>
+  </data>
+	<data name="Height" xml:space="preserve">
+    <value>Зріст</value>
+  </data>
+	<data name="Weight" xml:space="preserve">
+    <value>Вага</value>
+  </data>
+	<data name="Gender" xml:space="preserve">
+    <value>Стать</value>
+  </data>
+	<data name="Select gender" xml:space="preserve">
+    <value>Оберіть стать</value>
+  </data>
+	<data name="Male" xml:space="preserve">
+    <value>Чоловіча</value>
+  </data>
+	<data name="Female" xml:space="preserve">
+    <value>Жіноча</value>
+  </data>
+	<data name="Other" xml:space="preserve">
+    <value>Інша</value>
+  </data>
+	<data name="Change Photo (optional)" xml:space="preserve">
+    <value>Змінити фото (за бажанням)</value>
+  </data>
+	<data name="Current Photo" xml:space="preserve">
+    <value>Поточне фото</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Back to Team" xml:space="preserve">
+    <value>Повернутись до команди</value>
+  </data>
+</root>

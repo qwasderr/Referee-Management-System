@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Tests_Title" xml:space="preserve">
+    <value>Тести</value>
+  </data>
+	<data name="Tests_Header" xml:space="preserve">
+    <value>Тести</value>
+  </data>
+	<data name="Tests_Button_CreateNew" xml:space="preserve">
+    <value>Створити новий</value>
+  </data>
+	<data name="Tests_Column_Title" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+	<data name="Tests_Column_TestUrl" xml:space="preserve">
+    <value>Посилання на тест</value>
+  </data>
+	<data name="Tests_Column_Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+	<data name="Tests_Action_Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Tests_Action_Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Tests_Action_Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+	<data name="Tests_Status_Completed" xml:space="preserve">
+    <value>Виконано</value>
+  </data>
+	<data name="Tests_Button_Complete" xml:space="preserve">
+    <value>Позначити виконаним</value>
+  </data>
+</root>

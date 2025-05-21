@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SportSystem2.Models.Team>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Teams"];
+}
+
+<h1 class="mb-4">@Localizer["Teams"]</h1>
+
+<div class="mb-3">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">+ @Localizer["Create New Team"]</a>
+    }
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 80px;">@Localizer["Logo"]</th>
+                    <th>@Localizer["Name"]</th>
+                    <th>@Localizer["City"]</th>
+                    <th style="width: 220px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center align-middle" style="width: 80px; height: 80px;">
+                            @if (!string.IsNullOrEmpty(item.PhotoPath))
+                            {
+                                <img src="@Url.Content(item.PhotoPath)" alt="@Localizer["Team Logo"]"
+                                     class="rounded"
+                                     style="max-width: 70px; max-height: 70px; object-fit: contain;" />
+                            }
+                            else
+                            {
+                                <div class="bg-secondary rounded d-inline-block"
+                                     style="width: 70px; height: 70px;"></div>
+                            }
+                        </td>
+                        <td class="align-middle">@item.Name</td>
+                        <td class="align-middle">@item.City</td>
+                        <td class="align-middle">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.TeamId" class="btn btn-sm btn-outline-primary me-1">@Localizer["Edit"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.TeamId" class="btn btn-sm btn-outline-danger me-1">@Localizer["Delete"]</a>
+                            }
+
+                            <a asp-action="Details" asp-route-id="@item.TeamId" class="btn btn-sm btn-outline-info">@Localizer["Details"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

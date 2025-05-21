@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Match" xml:space="preserve">
+    <value>Edit Match</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+	<data name="Team A" xml:space="preserve">
+    <value>Team A</value>
+  </data>
+	<data name="Team B" xml:space="preserve">
+    <value>Team B</value>
+  </data>
+	<data name="Match Results" xml:space="preserve">
+    <value>Match Results</value>
+  </data>
+	<data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

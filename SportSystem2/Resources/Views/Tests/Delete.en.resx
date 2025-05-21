@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="DeleteTest_Title" xml:space="preserve">
+    <value>Delete Test</value>
+  </data>
+	<data name="DeleteTest_Header" xml:space="preserve">
+    <value>Delete Test</value>
+  </data>
+	<data name="DeleteTest_ConfirmMessage" xml:space="preserve">
+    <value>Are you sure you want to delete this test?</value>
+  </data>
+	<data name="DeleteTest_Label_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+	<data name="DeleteTest_Label_TestUrl" xml:space="preserve">
+    <value>Test URL</value>
+  </data>
+	<data name="DeleteTest_Button_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="DeleteTest_Button_BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

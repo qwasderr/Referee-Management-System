@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Match Details" xml:space="preserve">
+    <value>Деталі Матчу</value>
+  </data>
+	<data name="Match Location and Time" xml:space="preserve">
+    <value>Місце та Час Матчу</value>
+  </data>
+	<data name="Date and Time" xml:space="preserve">
+    <value>Дата та Час</value>
+  </data>
+	<data name="Location" xml:space="preserve">
+    <value>Локація</value>
+  </data>
+	<data name="Match Information" xml:space="preserve">
+    <value>Інформація про матч</value>
+  </data>
+	<data name="Final Score" xml:space="preserve">
+    <value>Підсумковий рахунок</value>
+  </data>
+	<data name="Player Events by Period" xml:space="preserve">
+    <value>Події гравців за періодами</value>
+  </data>
+	<data name="No events" xml:space="preserve">
+    <value>Подій немає</value>
+  </data>
+	<data name="Assigned Judges" xml:space="preserve">
+    <value>Призначені судді</value>
+  </data>
+	<data name="Judge Name" xml:space="preserve">
+    <value>Ім'я судді</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Comments" xml:space="preserve">
+    <value>Коментарі</value>
+  </data>
+	<data name="No judges assigned to this match." xml:space="preserve">
+    <value>Судді не призначені на цей матч.</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+
+	<data name="FirstHalf" xml:space="preserve">
+    <value>Перший тайм</value>
+  </data>
+	<data name="SecondHalf" xml:space="preserve">
+    <value>Другий тайм</value>
+  </data>
+	<data name="Overtime" xml:space="preserve">
+    <value>Додатковий час</value>
+  </data>
+</root>

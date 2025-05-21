@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Add Role to User" xml:space="preserve">
+    <value>Add Role to User</value>
+  </data>
+	<data name="Select User" xml:space="preserve">
+    <value>Select User</value>
+  </data>
+	<data name="Select a user" xml:space="preserve">
+    <value>-- Select a user --</value>
+  </data>
+	<data name="Select Role" xml:space="preserve">
+    <value>Select Role</value>
+  </data>
+	<data name="Select a role" xml:space="preserve">
+    <value>-- Select a role --</value>
+  </data>
+	<data name="Add Role" xml:space="preserve">
+    <value>Add Role</value>
+  </data>
+	<data name="Back to Roles List" xml:space="preserve">
+    <value>Back to Roles List</value>
+  </data>
+	<data name="Select an option" xml:space="preserve">
+    <value>Select an option</value>
+  </data>
+</root>

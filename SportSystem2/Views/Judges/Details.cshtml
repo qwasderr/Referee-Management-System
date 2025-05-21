@@ -1,0 +1,101 @@
+﻿@model SportSystem2.Models.DTOs.JudgeDTO
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["JudgeDetails"];
+}
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
+
+<div class="card shadow-sm p-4">
+    <div class="d-flex align-items-center mb-4">
+        <img src="@Model.AvatarUrl" alt="@Localizer["JudgeAvatarAlt"]" class="rounded-circle me-3" style="width:80px; height:80px; object-fit:cover; border: 2px solid #007bff;" />
+        <h5 class="card-title mb-0">@Model.FullName</h5>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-4 fw-semibold text-secondary">@Localizer["UserName"]</dt>
+        <dd class="col-sm-8">@(!string.IsNullOrEmpty(Model.FullName) ? Model.FullName : Localizer["NotAvailable"])</dd>
+
+        <dt class="col-sm-4 fw-semibold text-secondary">@Localizer["QualificationLevel"]</dt>
+        <dd class="col-sm-8">@Model.QualificationLevel</dd>
+
+        <dt class="col-sm-4 fw-semibold text-secondary">@Localizer["LastAttestationDate"]</dt>
+        <dd class="col-sm-8">
+            @(Model.LastAttestationDate.HasValue
+                ? Model.LastAttestationDate.Value.ToString("yyyy-MM-dd")
+                : Localizer["NotAvailable"])
+        </dd>
+    </dl>
+</div>
+
+@if (Model.GameAssignments.Any())
+{
+    <div class="card shadow-sm p-4 mt-4">
+        <h5 class="mb-3 text-primary">@Localizer["MatchesOfficiated"]</h5>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Localizer["Date"]</th>
+                    <th>@Localizer["Teams"]</th>
+                    <th>@Localizer["Role"]</th>
+                    <th>@Localizer["Tournament"]</th>
+                    <th>@Localizer["Round"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var assignment in Model.GameAssignments)
+                {
+                    <tr>
+                        <td>@assignment.Match.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@assignment.Match.TeamA.Name vs @assignment.Match.TeamB.Name</td>
+                        <td>@assignment.Role</td>
+                        <td>@assignment.Match.Tournament.Name</td>
+                        <td>@assignment.Match.TournamentRound.RoundName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@if (Model.MatchAnalyses.Any())
+{
+    <div class="card shadow-sm p-4 mt-4">
+        <h5 class="mb-3 text-primary">@Localizer["MatchAnalyses"]</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@Localizer["MatchDate"]</th>
+                    <th>@Localizer["Teams"]</th>
+                    <th>@Localizer["AnalysisSummary"]</th>
+                    <th>@Localizer["Details"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var analysis in Model.MatchAnalyses)
+                {
+                    <tr>
+                        <td>@analysis.Match.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@analysis.Match.TeamA.Name vs @analysis.Match.TeamB.Name</td>
+                        <td>
+                            @(analysis.Content != null && analysis.Content.Length > 100
+                                ? analysis.Content.Substring(0, 100) + "..."
+                                : analysis.Content)
+                        </td>
+                        <td>
+                            <a asp-controller="MatchAnalysis" asp-action="Details" asp-route-id="@analysis.MatchAnalysisId" class="btn btn-sm btn-outline-info">
+                                @Localizer["ViewDetails"]
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToList"]</a>
+</div>

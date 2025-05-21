@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="CreateMatch" xml:space="preserve">
+    <value>Create Match</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="SelectTournamentPlaceholder" xml:space="preserve">
+    <value>-- Select Tournament --</value>
+  </data>
+	<data name="TournamentRound" xml:space="preserve">
+    <value>Tournament Round</value>
+  </data>
+	<data name="SelectRoundPlaceholder" xml:space="preserve">
+    <value>-- Select Round --</value>
+  </data>
+	<data name="MatchDate" xml:space="preserve">
+    <value>Match Date</value>
+  </data>
+	<data name="TeamA" xml:space="preserve">
+    <value>Team A</value>
+  </data>
+	<data name="SelectTeamAPlaceholder" xml:space="preserve">
+    <value>-- Select Team A --</value>
+  </data>
+	<data name="TeamB" xml:space="preserve">
+    <value>Team B</value>
+  </data>
+	<data name="SelectTeamBPlaceholder" xml:space="preserve">
+    <value>-- Select Team B --</value>
+  </data>
+	<data name="CreateButton" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

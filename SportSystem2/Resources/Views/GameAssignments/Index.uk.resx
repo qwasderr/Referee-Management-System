@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Game Assignments" xml:space="preserve">
+    <value>Призначення на матчі</value>
+  </data>
+	<data name="Create New Assignment" xml:space="preserve">
+    <value>Створити нове призначення</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+	<data name="Not set" xml:space="preserve">
+    <value>Не встановлено</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+</root>

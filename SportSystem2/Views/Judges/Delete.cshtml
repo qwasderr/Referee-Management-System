@@ -1,0 +1,47 @@
+﻿@model SportSystem2.Models.Judge
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Delete"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>@Localizer["DeleteConfirmation"]</h3>
+<div>
+    <h4>@Localizer["Judge"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Localizer["ApplicationUser"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer["FullName"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer["QualificationLevel"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QualificationLevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer["LastAttestationDate"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastAttestationDate)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="JudgeId" />
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@Localizer["BackToList"]</a>
+    </form>
+</div>

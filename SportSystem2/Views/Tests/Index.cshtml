@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SportSystem2.Models.TestWithStatusViewModel>
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Tests_Title"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">@Localizer["Tests_Header"]</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> @Localizer["Tests_Button_CreateNew"]
+        </a>
+    }
+</div>
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-light">
+        <tr>
+            <th>@Localizer["Tests_Column_Title"]</th>
+            <th>@Localizer["Tests_Column_TestUrl"]</th>
+            <th style="width: 240px">@Localizer["Tests_Column_Actions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Test.Title</td>
+                <td>
+                    <a href="@item.Test.TestUrl" target="_blank">@item.Test.TestUrl</a>
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Test.TestId" class="btn btn-sm btn-outline-primary">
+                                @Localizer["Tests_Action_Edit"]
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Test.TestId" class="btn btn-sm btn-outline-danger">
+                                @Localizer["Tests_Action_Delete"]
+                            </a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.Test.TestId" class="btn btn-sm btn-outline-info">
+                            @Localizer["Tests_Action_Details"]
+                        </a>
+                        @if (User.IsInRole("Judge"))
+                        {
+                            @if (item.IsCompleted)
+                            {
+                                <button class="btn btn-sm btn-success" disabled>
+                                    ✔ @Localizer["Tests_Status_Completed"]
+                                </button>
+                            }
+                            else
+                            {
+                                <form asp-action="MarkAsCompleted" asp-controller="Tests" method="post" class="d-inline">
+                                    <input type="hidden" name="testId" value="@item.Test.TestId" />
+                                    <button type="submit" class="btn btn-sm btn-outline-success">
+                                        ✔ @Localizer["Tests_Button_Complete"]
+                                    </button>
+                                </form>
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

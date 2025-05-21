@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="PlayerProfileTitle" xml:space="preserve">
+    <value>Профіль гравця</value>
+  </data>
+	<data name="BirthDate" xml:space="preserve">
+    <value>Дата народження</value>
+  </data>
+	<data name="Age" xml:space="preserve">
+    <value>Вік</value>
+  </data>
+	<data name="Height" xml:space="preserve">
+    <value>Зріст</value>
+  </data>
+	<data name="Weight" xml:space="preserve">
+    <value>Вага</value>
+  </data>
+	<data name="Gender" xml:space="preserve">
+    <value>Стать</value>
+  </data>
+	<data name="BackToTeam" xml:space="preserve">
+    <value>Назад до команди</value>
+  </data>
+	<data name="PlayerEventsByMatch" xml:space="preserve">
+    <value>Події гравця за матчами</value>
+  </data>
+	<data name="HalfNumber" xml:space="preserve">
+    <value>Тайм</value>
+  </data>
+	<data name="QuarterNumber" xml:space="preserve">
+    <value>Чверть</value>
+  </data>
+	<data name="Minute" xml:space="preserve">
+    <value>Хвилина</value>
+  </data>
+	<data name="Description" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+	<data name="NoEventsRecorded" xml:space="preserve">
+    <value>Для цього гравця події не зафіксовані.</value>
+  </data>
+</root>

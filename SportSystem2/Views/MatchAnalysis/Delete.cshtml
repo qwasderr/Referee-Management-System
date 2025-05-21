@@ -1,0 +1,53 @@
+﻿@model SportSystem2.Models.MatchAnalysis
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["DeleteMatchAnalysisTitle"];
+}
+
+<h1 class="mb-4 text-danger">@Localizer["DeleteMatchAnalysisHeader"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title text-warning mb-3">@Localizer["DeleteConfirmationMessage"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["MatchLabel"]</dt>
+        @{
+            var matches = ViewData["MatchesDescriptions"] as IEnumerable<SelectListItem>;
+            var selectedText = matches?.FirstOrDefault(m => m.Value == Model.MatchId.ToString())?.Text;
+        }
+        <dd class="col-sm-9">@selectedText</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TitleLabel"]</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["ContentLabel"]</dt>
+        <dd class="col-sm-9">@Model.Content</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["CreatedAtLabel"]</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToString("g")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["LastEditedAtLabel"]</dt>
+        <dd class="col-sm-9">@Model.LastEditedAt?.ToString("g")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["CreatedByJudgeLabel"]</dt>
+        <dd class="col-sm-9">@Model.CreatedByJudge?.FullName</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["AttachmentUrlLabel"]</dt>
+        <dd class="col-sm-9">@Model.AttachmentUrl</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["MinuteFromLabel"]</dt>
+        <dd class="col-sm-9">@Model.MinuteFrom</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["MinuteToLabel"]</dt>
+        <dd class="col-sm-9">@Model.MinuteTo</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MatchAnalysisId" />
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger">@Localizer["DeleteButton"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["BackToListButton"]</a>
+        </div>
+    </form>
+</div>

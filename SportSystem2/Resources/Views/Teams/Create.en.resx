@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Team" xml:space="preserve">
+    <value>Create Team</value>
+  </data>
+	<data name="Team Name" xml:space="preserve">
+    <value>Team Name</value>
+  </data>
+	<data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+	<data name="Upload Photo (optional)" xml:space="preserve">
+    <value>Upload Photo (optional)</value>
+  </data>
+	<data name="Photo Preview" xml:space="preserve">
+    <value>Photo Preview</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

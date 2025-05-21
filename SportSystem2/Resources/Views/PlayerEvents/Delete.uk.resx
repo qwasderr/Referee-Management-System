@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Delete Player Event" xml:space="preserve">
+    <value>Видалити подію гравця</value>
+  </data>
+	<data name="Are you sure you want to delete this player event?" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити цю подію гравця?</value>
+  </data>
+	<data name="Player" xml:space="preserve">
+    <value>Гравець</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="Event Type" xml:space="preserve">
+    <value>Тип події</value>
+  </data>
+	<data name="Yards" xml:space="preserve">
+    <value>Ярди</value>
+  </data>
+	<data name="Points" xml:space="preserve">
+    <value>Очки</value>
+  </data>
+	<data name="Minute" xml:space="preserve">
+    <value>Хвилина</value>
+  </data>
+	<data name="Period Number" xml:space="preserve">
+    <value>Номер періоду</value>
+  </data>
+	<data name="Period Type" xml:space="preserve">
+    <value>Тип періоду</value>
+  </data>
+	<data name="Notes" xml:space="preserve">
+    <value>Примітки</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутись до списку</value>
+  </data>
+
+	<data name="SomeEventTypeValue" xml:space="preserve">
+    <value>Назва типу події (укр)</value>
+  </data>
+	<data name="SomePeriodTypeValue" xml:space="preserve">
+    <value>Назва типу періоду (укр)</value>
+  </data>
+</root>

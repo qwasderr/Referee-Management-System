@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Tests_Title" xml:space="preserve">
+    <value>Tests</value>
+  </data>
+	<data name="Tests_Header" xml:space="preserve">
+    <value>Tests</value>
+  </data>
+	<data name="Tests_Button_CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+	<data name="Tests_Column_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+	<data name="Tests_Column_TestUrl" xml:space="preserve">
+    <value>Test URL</value>
+  </data>
+	<data name="Tests_Column_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+	<data name="Tests_Action_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="Tests_Action_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="Tests_Action_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+	<data name="Tests_Status_Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+	<data name="Tests_Button_Complete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+</root>

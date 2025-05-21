@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Edit Player Event" xml:space="preserve">
+    <value>Edit Player Event</value>
+  </data>
+	<data name="Player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+	<data name="-- Select Player --" xml:space="preserve">
+    <value>-- Select Player --</value>
+  </data>
+	<data name="Event Type" xml:space="preserve">
+    <value>Event Type</value>
+  </data>
+	<data name="-- Select event type --" xml:space="preserve">
+    <value>-- Select event type --</value>
+  </data>
+	<data name="Yards" xml:space="preserve">
+    <value>Yards</value>
+  </data>
+	<data name="Points" xml:space="preserve">
+    <value>Points</value>
+  </data>
+	<data name="Minute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+	<data name="Period Number" xml:space="preserve">
+    <value>Period Number</value>
+  </data>
+	<data name="Period Type" xml:space="preserve">
+    <value>Period Type</value>
+  </data>
+	<data name="-- Select Period Type --" xml:space="preserve">
+    <value>-- Select Period Type --</value>
+  </data>
+	<data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

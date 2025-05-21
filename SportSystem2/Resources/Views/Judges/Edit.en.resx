@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Edit Judge" xml:space="preserve">
+    <value>Edit Judge</value>
+  </data>
+	<data name="Full Name" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+	<data name="Enter full name" xml:space="preserve">
+    <value>Enter full name</value>
+  </data>
+	<data name="Qualification Level" xml:space="preserve">
+    <value>Qualification Level</value>
+  </data>
+	<data name="Enter qualification level" xml:space="preserve">
+    <value>Enter qualification level</value>
+  </data>
+	<data name="Last Attestation Date" xml:space="preserve">
+    <value>Last Attestation Date</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

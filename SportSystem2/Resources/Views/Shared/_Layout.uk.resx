@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+	<data name="Toggle navigation" xml:space="preserve">
+    <value>Перемкнути навігацію</value>
+  </data>
+	<data name="Tournaments" xml:space="preserve">
+    <value>Турніри</value>
+  </data>
+	<data name="Matches" xml:space="preserve">
+    <value>Матчі</value>
+  </data>
+	<data name="Teams" xml:space="preserve">
+    <value>Команди</value>
+  </data>
+	<data name="Players" xml:space="preserve">
+    <value>Гравці</value>
+  </data>
+	<data name="Judges" xml:space="preserve">
+    <value>Судді</value>
+  </data>
+	<data name="Tests" xml:space="preserve">
+    <value>Тести</value>
+  </data>
+	<data name="My Results" xml:space="preserve">
+    <value>Мої Результати</value>
+  </data>
+	<data name="My Games" xml:space="preserve">
+    <value>Мої Ігри</value>
+  </data>
+	<data name="My Analyses" xml:space="preserve">
+    <value>Мої Аналізи</value>
+  </data>
+	<data name="Manage Roles" xml:space="preserve">
+    <value>Керування Ролями</value>
+  </data>
+	<data name="Test Results" xml:space="preserve">
+    <value>Результати Тестів</value>
+  </data>
+	<data name="Match Analyses" xml:space="preserve">
+    <value>Аналізи Матчів</value>
+  </data>
+	<data name="News" xml:space="preserve">
+    <value>Новини</value>
+  </data>
+	<data name="English" xml:space="preserve">
+    <value>Англійська</value>
+  </data>
+	<data name="Ukrainian" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+	<data name="Privacy" xml:space="preserve">
+    <value>Конфіденційність</value>
+  </data>
+</root>

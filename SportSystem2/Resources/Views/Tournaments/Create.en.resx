@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Tournament" xml:space="preserve">
+    <value>Create Tournament</value>
+  </data>
+	<data name="Tournament Name" xml:space="preserve">
+    <value>Tournament Name</value>
+  </data>
+	<data name="Tournament Type" xml:space="preserve">
+    <value>Tournament Type</value>
+  </data>
+	<data name="-- Select type --" xml:space="preserve">
+    <value>-- Select type --</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

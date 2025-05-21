@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="MatchAnalysisDetails" xml:space="preserve">
+    <value>Деталі аналізу матчу</value>
+  </data>
+	<data name="AnalysisInformation" xml:space="preserve">
+    <value>Інформація про аналіз</value>
+  </data>
+	<data name="Match" xml:space="preserve">
+    <value>Матч</value>
+  </data>
+	<data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+	<data name="Content" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+	<data name="CreatedAt" xml:space="preserve">
+    <value>Створено</value>
+  </data>
+	<data name="LastEditedAt" xml:space="preserve">
+    <value>Останнє редагування</value>
+  </data>
+	<data name="CreatedByJudge" xml:space="preserve">
+    <value>Автор (суддя)</value>
+  </data>
+	<data name="AttachmentUrl" xml:space="preserve">
+    <value>Посилання на відео</value>
+  </data>
+	<data name="MinuteFromTo" xml:space="preserve">
+    <value>Мінута з / по</value>
+  </data>
+	<data name="From" xml:space="preserve">
+    <value>З</value>
+  </data>
+	<data name="To" xml:space="preserve">
+    <value>По</value>
+  </data>
+	<data name="VideoAnalysis" xml:space="preserve">
+    <value>Відеоаналіз</value>
+  </data>
+	<data name="BackToList" xml:space="preserve">
+    <value>Повернутись до списку</value>
+  </data>
+	<data name="NotSelected" xml:space="preserve">
+    <value>Не вибрано</value>
+  </data>
+</root>

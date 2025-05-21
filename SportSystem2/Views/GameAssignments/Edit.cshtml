@@ -1,0 +1,49 @@
+﻿@model SportSystem2.Models.GameAssignment
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Edit Game Assignment"];
+}
+
+<h1 class="mb-4">@Localizer["Edit Game Assignment"]</h1>
+
+<div class="card shadow-sm p-4">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <input type="hidden" asp-for="GameAssignmentId" />
+
+        <div class="mb-3">
+            <label asp-for="JudgeId" class="form-label fw-semibold">@Localizer["Judge"]</label>
+            <select asp-for="JudgeId" class="form-select" asp-items="ViewBag.JudgeId">
+                <option disabled selected>-- @Localizer["Select judge"] --</option>
+            </select>
+            <span asp-validation-for="JudgeId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MatchId" class="form-label fw-semibold">@Localizer["Match"]</label>
+            <select asp-for="MatchId" class="form-select" asp-items="ViewBag.MatchId">
+                <option disabled selected>-- @Localizer["Select match"] --</option>
+            </select>
+            <span asp-validation-for="MatchId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Role" class="form-label fw-semibold">@Localizer["Role"]</label>
+            <select asp-for="Role" class="form-select" asp-items="Html.GetEnumSelectList<JudgeRole>()"></select>
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">@Localizer["Save"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Back to List"]</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

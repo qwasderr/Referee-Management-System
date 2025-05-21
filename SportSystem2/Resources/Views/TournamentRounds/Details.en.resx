@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Title" xml:space="preserve">
+    <value>Tournament Round Details</value>
+  </data>
+	<data name="Header" xml:space="preserve">
+    <value>Tournament Round Details</value>
+  </data>
+	<data name="InfoHeading" xml:space="preserve">
+    <value>Tournament Round Information</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Tournament</value>
+  </data>
+	<data name="RoundName" xml:space="preserve">
+    <value>Round Name</value>
+  </data>
+	<data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+	<data name="StartDateTime" xml:space="preserve">
+    <value>Start Date and Time</value>
+  </data>
+	<data name="EndDateTime" xml:space="preserve">
+    <value>End Date and Time</value>
+  </data>
+	<data name="BackToRounds" xml:space="preserve">
+    <value>Back to Tournament Rounds</value>
+  </data>
+	<data name="BackToAllRounds" xml:space="preserve">
+    <value>Back to All Rounds</value>
+  </data>
+</root>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Matches" xml:space="preserve">
+    <value>Матчі</value>
+  </data>
+	<data name="Create New Match" xml:space="preserve">
+    <value>Створити новий матч</value>
+  </data>
+	<data name="Back to Tournament Rounds" xml:space="preserve">
+    <value>← Назад до турнірних раундів</value>
+  </data>
+	<data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+	<data name="Home Team City" xml:space="preserve">
+    <value>Місто домашньої команди</value>
+  </data>
+	<data name="Home Team Name" xml:space="preserve">
+    <value>Назва домашньої команди</value>
+  </data>
+	<data name="Score" xml:space="preserve">
+    <value>Рахунок</value>
+  </data>
+	<data name="Away Team Name" xml:space="preserve">
+    <value>Назва команди гостей</value>
+  </data>
+	<data name="Away Team City" xml:space="preserve">
+    <value>Місто команди гостей</value>
+  </data>
+	<data name="Tournament" xml:space="preserve">
+    <value>Турнір</value>
+  </data>
+	<data name="Tournament Round" xml:space="preserve">
+    <value>Раунд турніру</value>
+  </data>
+	<data name="Location" xml:space="preserve">
+    <value>Локація</value>
+  </data>
+	<data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+	<data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+	<data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+	<data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+	<data name="Show Events" xml:space="preserve">
+    <value>Показати події</value>
+  </data>
+	<data name="Create Analysis" xml:space="preserve">
+    <value>Створити аналіз</value>
+  </data>
+	<data name="Show Judges" xml:space="preserve">
+    <value>Показати суддів</value>
+  </data>
+</root>

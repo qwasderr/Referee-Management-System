@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<data name="Edit Judge" xml:space="preserve">
+    <value>Редагувати суддю</value>
+  </data>
+	<data name="Full Name" xml:space="preserve">
+    <value>Повне ім'я</value>
+  </data>
+	<data name="Enter full name" xml:space="preserve">
+    <value>Введіть повне ім'я</value>
+  </data>
+	<data name="Qualification Level" xml:space="preserve">
+    <value>Рівень кваліфікації</value>
+  </data>
+	<data name="Enter qualification level" xml:space="preserve">
+    <value>Введіть рівень кваліфікації</value>
+  </data>
+	<data name="Last Attestation Date" xml:space="preserve">
+    <value>Дата останньої атестації</value>
+  </data>
+	<data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутись до списку</value>
+  </data>
+</root>

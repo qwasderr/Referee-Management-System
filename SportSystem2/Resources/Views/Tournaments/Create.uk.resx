@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="Create Tournament" xml:space="preserve">
+    <value>Створити Турнір</value>
+  </data>
+	<data name="Tournament Name" xml:space="preserve">
+    <value>Назва Турніру</value>
+  </data>
+	<data name="Tournament Type" xml:space="preserve">
+    <value>Тип Турніру</value>
+  </data>
+	<data name="-- Select type --" xml:space="preserve">
+    <value>-- Виберіть тип --</value>
+  </data>
+	<data name="Create" xml:space="preserve">
+    <value>Створити</value>
+  </data>
+	<data name="Back to List" xml:space="preserve">
+    <value>Повернутися до списку</value>
+  </data>
+</root>
