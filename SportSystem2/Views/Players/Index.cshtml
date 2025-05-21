@@ -48,7 +48,7 @@
                             <td class="text-center">
                                 @if (!string.IsNullOrEmpty(item.PhotoPath))
                                 {
-                                    <img src="~@item.PhotoPath" alt="@Localizer["Photo of {0}", item.FullName]"
+                                    <img src="@item.PhotoPath" alt="@Localizer["Photo of {0}", item.FullName]"
                                          class="rounded-circle" style="width: 100px; height: 130px; object-fit: cover;" />
                                 }
                                 else

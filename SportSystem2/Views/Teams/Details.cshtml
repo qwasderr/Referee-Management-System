@@ -62,7 +62,7 @@
                             <td class="text-center">
                                 @if (!string.IsNullOrEmpty(player.PhotoPath))
                                 {
-                                    <img src="@Url.Content("~/uploads/" + player.PhotoPath)" alt="@Localizer["Photo of"] @player.FullName"
+                                    <img src="@Url.Content(player.PhotoPath)" alt="@Localizer["Photo of"] @player.FullName"
                                          class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;" />
                                 }
                                 else

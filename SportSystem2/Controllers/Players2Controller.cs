@@ -12,20 +12,18 @@ namespace SportSystem2.Controllers
     public class Players2Controller : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _environment;
         private readonly IImageService _imageService;
         private const string UploadFolder = "players";
-        public Players2Controller(ApplicationDbContext context, IWebHostEnvironment environment, IImageService imageService)
+        public Players2Controller(ApplicationDbContext context, IImageService imageService)
         {
             _context = context;
-            _environment = environment;
             _imageService = imageService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Players.Include(p => p.Team);
-            return View(await applicationDbContext.ToListAsync());
+            var players = _context.Players.Include(p => p.Team);
+            return View(await players.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -84,7 +82,8 @@ namespace SportSystem2.Controllers
                 }
                 _context.Add(player);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+                //return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+                return RedirectToAction(nameof(Index));
             }
 
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", player.TeamId);
@@ -193,7 +192,8 @@ namespace SportSystem2.Controllers
             if (hasPlayerEvents)
             {
                 TempData["ErrorMessage"] = "Deletion is not allowed because the player has related events.";
-                return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+                //return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+                return RedirectToAction(nameof(Index));
             }
 
             if (!string.IsNullOrEmpty(player.PhotoPath))
@@ -204,7 +204,8 @@ namespace SportSystem2.Controllers
             _context.Players.Remove(player);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+            //return RedirectToAction("Details", "Teams", new { id = player.TeamId });
+            return RedirectToAction(nameof(Index));
         }
 
         private bool PlayerExists(int id)
