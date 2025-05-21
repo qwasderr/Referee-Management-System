@@ -1,4 +1,4 @@
-[Documentation_RMS.docx](https://github.com/user-attachments/files/20368890/Documentation_RMS.docx)
+[Documentation_RMS.docx](https://github.com/user-attachments/files/20369034/Documentation_RMS.docx)
 ![Admin](https://github.com/user-attachments/assets/33621ab5-c700-456d-8f8b-69f0bd0acade)
 ![Referee](https://github.com/user-attachments/assets/9d3fe804-b293-4f24-9df6-fe4f621ff16d)
 ![Fan](https://github.com/user-attachments/assets/f4475bc4-bc67-4827-a627-4bb6743cdf53)
