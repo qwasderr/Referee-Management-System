@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SportSystem2.Models.TestResult>
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Test Results"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">@Localizer["Test Results"]</h1>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i> @Localizer["Create New"]
+    </a>
+</div>
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-light">
+        <tr>
+            <th>@Localizer["Judge"]</th>
+            <th>@Localizer["Test URL"]</th>
+            <th>@Localizer["Score"]</th>
+            <th>@Localizer["Date Taken"]</th>
+            <th>@Localizer["Status"]</th>
+            <th style="width: 240px;">@Localizer["Actions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Judge.FullName</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Test?.TestUrl))
+                    {
+                        <a href="@item.Test.TestUrl" target="_blank" class="text-decoration-underline">@item.Test.TestUrl</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">@Localizer["N/A"]</span>
+                    }
+                </td>
+                <td>
+                    @(item.Score.HasValue ? item.Score.ToString() : Localizer["Pending..."])
+                </td>
+                <td>@item.DateTaken.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @if (item.Score.HasValue)
+                    {
+                        <span class="badge bg-success">@Localizer["Checked"]</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">@Localizer["Not checked"]</span>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.TestResultId" class="btn btn-sm btn-outline-primary">@Localizer["Edit"]</a>
+                        <a asp-action="Details" asp-route-id="@item.TestResultId" class="btn btn-sm btn-outline-info">@Localizer["Details"]</a>
+                        <a asp-action="Delete" asp-route-id="@item.TestResultId" class="btn btn-sm btn-outline-danger">@Localizer["Delete"]</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

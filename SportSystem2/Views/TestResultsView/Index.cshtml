@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SportSystem2.Models.TestResult>
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["TestResults_Title"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">@Localizer["TestResults_Header"]</h1>
+</div>
+
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-light">
+        <tr>
+            <th>@Localizer["TestResults_TestUrl"]</th>
+            <th>@Localizer["TestResults_Score"]</th>
+            <th>@Localizer["TestResults_DateTaken"]</th>
+            <th style="width: 200px;">@Localizer["TestResults_Actions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Test.TestUrl))
+                    {
+                        <a href="@item.Test.TestUrl" target="_blank" class="text-decoration-underline">@item.Test.TestUrl</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">@Localizer["TestResults_NA"]</span>
+                    }
+                </td>
+                @if (item.Score == null)
+                {
+                    <td>@Localizer["TestResults_Pending"]</td>
+                }
+                else
+                {
+                    <td>@item.Score</td>
+                }
+                <td>@item.DateTaken.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Details" asp-route-id="@item.TestResultId" class="btn btn-sm btn-outline-info">@Localizer["TestResults_Details"]</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

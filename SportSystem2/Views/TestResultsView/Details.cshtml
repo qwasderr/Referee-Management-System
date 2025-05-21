@@ -1,0 +1,58 @@
+﻿@model SportSystem2.Models.TestResult
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["TestResultDetails_Title"];
+}
+
+<h1 class="mb-4">@Localizer["TestResultDetails_Header"]</h1>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title mb-3 text-primary">@Localizer["TestResultDetails_ResultInformation"]</h5>
+
+    <dl class="row">
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TestResultDetails_TestUrl"]</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrEmpty(Model.Test.TestUrl))
+            {
+                <a href="@Model.Test.TestUrl" target="_blank" class="text-decoration-underline">@Model.Test.TestUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">@Localizer["TestResultDetails_NA"]</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TestResultDetails_Score"]</dt>
+        @if (Model.Score == null)
+        {
+            <dd class="col-sm-9">@Localizer["TestResultDetails_Pending"]</dd>
+        }
+        else
+        {
+            <dd class="col-sm-9">@Model.Score</dd>
+        }
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["TestResultDetails_DateTaken"]</dt>
+        <dd class="col-sm-9">@Model.DateTaken.ToString("yyyy-MM-dd")</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary align-self-start">@Localizer["TestResultDetails_Explanation"]</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrWhiteSpace(Model.Explanation))
+            {
+                <div class="border rounded p-3 bg-light" style="white-space: pre-wrap;">
+                    @Model.Explanation
+                </div>
+            }
+            else
+            {
+                <span class="text-muted fst-italic">@Localizer["TestResultDetails_NoExplanation"]</span>
+            }
+        </dd>
+    </dl>
+</div>
+
+<a asp-action="Index" class="btn btn-outline-secondary">@Localizer["TestResultDetails_BackToList"]</a>

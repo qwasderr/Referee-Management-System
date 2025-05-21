@@ -1,0 +1,41 @@
+﻿@model SportSystem2.Models.TestResult
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Test Result Details"];
+}
+
+<h1 class="mb-4">@Localizer["Test Result Details"]</h1>
+
+<div class="card shadow-sm p-4">
+    <h5 class="card-title mb-3 text-primary">@Localizer["Test Result Information"]</h5>
+
+    <dl class="row">
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Judge"]</dt>
+        <dd class="col-sm-9">@Model.Judge?.FullName</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Test URL"]</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrEmpty(Model.Test?.TestUrl))
+            {
+                <a href="@Model.Test.TestUrl" target="_blank" class="text-decoration-underline">@Model.Test.TestUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">@Localizer["N/A"]</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Score"]</dt>
+        <dd class="col-sm-9">@Model.Score</dd>
+
+        <dt class="col-sm-3 fw-semibold text-secondary">@Localizer["Date Taken"]</dt>
+        <dd class="col-sm-9">@Model.DateTaken.ToString("g")</dd>
+    </dl>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.TestResultId" class="btn btn-primary me-2">@Localizer["Edit"]</a>
+    <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Back to List"]</a>
+</div>
